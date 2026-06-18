@@ -10,18 +10,44 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--blue:#216686;--red:#CD4F4F;--gray:#A6A6A6;--orange:#DC7528;--green:#1D7D54;--dark:#1a1a2e;--text:#1e1e2e;--light:#5a5a72;--bg:#f8f7f4;--white:#ffffff;--border:#e2e0da}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:15px}
-.header{background:var(--dark);color:white;padding:2.5rem 3rem;position:relative;overflow:hidden}
+
+/* ── HEADER ── */
+.header{background:var(--dark);color:white;padding:2rem 3rem 0;position:relative;overflow:hidden}
 .header::before{content:'';position:absolute;top:-60px;right:-80px;width:300px;height:300px;border-radius:50%;border:2px solid rgba(33,102,134,0.3)}
-.header-eyebrow{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:.75rem}
-.header h1{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;line-height:1.15;margin-bottom:.5rem}
+.header-top{position:relative;z-index:1;padding-bottom:1.5rem}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;margin-bottom:1rem;transition:color .15s}
+.back-link:hover{color:rgba(255,255,255,0.8)}
+.back-link svg{width:14px;height:14px}
+.header-eyebrow{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:.5rem}
+.header h1{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;line-height:1.15;margin-bottom:.4rem}
 .header h1 span{color:#64b8d4}
-.header-sub{font-size:14px;color:rgba(255,255,255,0.55);max-width:560px;margin-top:.5rem}
-.header-meta{display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap}
-.header-meta-item{display:flex;flex-direction:column;gap:3px}
-.header-meta-item .label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35)}
-.header-meta-item .value{font-size:13px;font-weight:500;color:rgba(255,255,255,0.85)}
-.container{max-width:1100px;margin:0 auto;padding:2.5rem 2rem}
-.sec-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;margin-top:2.5rem}
+.header-sub{font-size:13px;color:rgba(255,255,255,0.5);max-width:560px}
+.header-meta{display:flex;gap:2rem;margin-top:1rem;flex-wrap:wrap}
+.header-meta-item{display:flex;flex-direction:column;gap:2px}
+.header-meta-item .label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.header-meta-item .value{font-size:12px;font-weight:500;color:rgba(255,255,255,0.75)}
+
+/* ── STICKY NAV ── */
+.nav-bar{position:sticky;top:0;z-index:100;background:var(--dark);border-bottom:1px solid rgba(255,255,255,0.08)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-btn{flex-shrink:0;padding:.8rem 1.4rem;font-size:12px;font-weight:600;letter-spacing:.5px;color:rgba(255,255,255,0.45);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .18s;text-transform:uppercase;white-space:nowrap}
+.nav-btn:hover{color:rgba(255,255,255,0.85)}
+.nav-btn.active{color:#64b8d4;border-bottom-color:#64b8d4}
+
+/* ── SECTIONS ── */
+.section{display:none;animation:fadeIn .25s ease}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── RESUMEN (always visible on summary tab) ── */
+.summary-hero{background:var(--dark);padding:2rem 0;margin-bottom:0}
+
+/* ── CONTAINER ── */
+.container{max-width:1100px;margin:0 auto;padding:2rem 2rem 3rem}
+
+/* ── REUSED STYLES ── */
+.sec-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;margin-top:2rem}
 .sec-num{width:32px;height:32px;border-radius:50%;background:var(--blue);color:white;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .sec-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:600;color:var(--text)}
 .sec-line{flex:1;height:1px;background:var(--border)}
@@ -66,13 +92,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .dark-box p.ey{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:1rem}
 .dark-box p.lead{font-family:'Playfair Display',serif;font-size:1.2rem;color:#8dcfe8;line-height:1.5;margin-bottom:.75rem}
 .dark-box p.body{font-size:13.5px;color:rgba(255,255,255,0.6);line-height:1.7}
-.src{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.5rem;margin-top:2.5rem}
+.src{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.5rem;margin-top:2rem}
 .src h4{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--light);margin-bottom:.75rem}
 .src ul{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem 1.5rem}
 .src li{font-size:12px;color:var(--light)}
 .src li::before{content:'— ';color:var(--blue)}
-.footer{background:var(--dark);color:rgba(255,255,255,0.4);text-align:center;font-size:11px;padding:1.5rem;margin-top:3rem;letter-spacing:.5px}
-.footer strong{color:rgba(255,255,255,0.7)}
+.footer{background:var(--dark);color:rgba(255,255,255,0.4);text-align:center;font-size:11px;padding:1.25rem;margin-top:2rem;letter-spacing:.5px}
 .timeline{display:flex;flex-direction:column;gap:0;background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1.5rem}
 .tl-row{display:grid;grid-template-columns:180px 100px 1fr 200px;border-bottom:1px solid var(--border);font-size:13px}
 .tl-row:last-child{border-bottom:none}
@@ -82,482 +107,572 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
 .tl-cell strong{color:var(--text);font-weight:600;display:block;margin-bottom:2px}
 .prog-bar{height:6px;border-radius:3px;background:#eee;margin-top:6px}
 .prog-fill{height:100%;border-radius:3px}
-.update-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:rgba(220,117,40,0.15);color:var(--orange);margin-left:6px;vertical-align:middle}
-@media(max-width:680px){.cgrid{grid-template-columns:1fr}.header{padding:2rem 1.5rem}.header h1{font-size:1.8rem}.tl-row{grid-template-columns:1fr}.tl-cell{border-right:none;border-bottom:1px solid var(--border)}.tl-cell:last-child{border-bottom:none}}
+
+/* ── RESUMEN CARDS (summary tab) ── */
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-bottom:1.5rem}
+.sum-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;cursor:pointer;transition:transform .18s,box-shadow .18s;display:flex;flex-direction:column;gap:.5rem}
+.sum-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+.sum-card-top{display:flex;justify-content:space-between;align-items:flex-start}
+.sum-card-icon{font-size:1.6rem;line-height:1}
+.sum-card-arrow{font-size:13px;color:var(--light);transition:transform .15s}
+.sum-card:hover .sum-card-arrow{transform:translateX(3px)}
+.sum-card h3{font-size:14px;font-weight:700;color:var(--text);line-height:1.3}
+.sum-card p{font-size:12.5px;color:var(--light);line-height:1.5;margin:0}
+.sum-card .sum-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:20px;margin-top:.25rem}
+.badge-blue{background:rgba(33,102,134,0.1);color:var(--blue)}
+.badge-green{background:rgba(29,125,84,0.1);color:var(--green)}
+.badge-orange{background:rgba(220,117,40,0.1);color:var(--orange)}
+.badge-red{background:rgba(205,79,79,0.1);color:var(--red)}
+
+@media(max-width:680px){
+  .cgrid{grid-template-columns:1fr}
+  .header{padding:1.5rem 1.5rem 0}
+  .header h1{font-size:1.7rem}
+  .tl-row{grid-template-columns:1fr}
+  .tl-cell{border-right:none;border-bottom:1px solid var(--border)}
+  .tl-cell:last-child{border-bottom:none}
+  .container{padding:1.5rem 1rem 2rem}
+}
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <div class="header">
-  <div style="position:relative;z-index:1">
+  <div class="header-top">
+    <a href="index.html" class="back-link">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg>
+      Volver al índice
+    </a>
     <div class="header-eyebrow">Análisis de Contexto País · Junio 2026</div>
-    <h1>Chile <span>2026–2027</span><br>Perspectiva Macro y Financiera</h1>
-    <p class="header-sub">Análisis del entorno político, económico y financiero de Chile para el período 2026–2027. Cubre macro, política, sectores de inversión y perspectivas del sistema financiero.</p>
+    <h1>Chile <span>2026–2027</span></h1>
+    <p class="header-sub">Perspectiva macroeconómica y financiera. Cubre macro, política, sectores de inversión, sistema financiero y riesgos.</p>
     <div class="header-meta">
-      <div class="header-meta-item"><span class="label">Fecha</span><span class="value">Junio 2026</span></div>
-      <div class="header-meta-item"><span class="label">Fuente primaria</span><span class="value">EIU One-click Report · Junio 2026</span></div>
-      <div class="header-meta-item"><span class="label">Fuentes complementarias</span><span class="value">BCCh IPoM junio 2026 · CMF · Hacienda · Bloomberg · Emol · BioBioChile</span></div>
+      <div class="header-meta-item"><span class="label">Fuente primaria</span><span class="value">EIU One-click Report · Mayo 2026</span></div>
+      <div class="header-meta-item"><span class="label">Complementarias</span><span class="value">BCCh IPoM · CMF · Hacienda · Bloomberg · CBC · Cochilco</span></div>
+      <div class="header-meta-item"><span class="label">Actualizado</span><span class="value">Junio 2026</span></div>
     </div>
   </div>
 </div>
 
+<!-- STICKY NAV -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection('resumen',this)">📋 Resumen</button>
+    <button class="nav-btn" onclick="showSection('macro',this)">📈 Macro</button>
+    <button class="nav-btn" onclick="showSection('politica',this)">🏛 Política</button>
+    <button class="nav-btn" onclick="showSection('sectores',this)">⛏ Sectores</button>
+    <button class="nav-btn" onclick="showSection('financiero',this)">🏦 Sector Financiero</button>
+    <button class="nav-btn" onclick="showSection('riesgos',this)">⚠️ Riesgos</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECCIÓN: RESUMEN
+══════════════════════════════════════════════ -->
+<div id="sec-resumen" class="section active">
 <div class="container">
 
-<!-- KPI RESUMEN -->
-<div class="kpi-row" style="margin-top:2rem">
-  <div class="kpi"><div class="kl">PIB real 2025</div><div class="kv">2.5%</div><div class="ks">Cierre sólido</div></div>
-  <div class="kpi r"><div class="kl">PIB real 2026E</div><div class="kv">1.4%</div><div class="ks">IPoM jun: 1.0–1.75%</div></div>
-  <div class="kpi g"><div class="kl">PIB real 2027E</div><div class="kv">3.2%</div><div class="ks">Rebote confirmado</div></div>
-  <div class="kpi r"><div class="kl">Inflación 2026E</div><div class="kv">3.6%</div><div class="ks">Mayo: 3.9% anual</div></div>
-  <div class="kpi"><div class="kl">Tasa BCCh</div><div class="kv">4.5%</div><div class="ks">Pausa data-dependent</div></div>
-  <div class="kpi o"><div class="kl">Cobre COMEX</div><div class="kv">$6.65</div><div class="ks">Por libra · récord jun'26</div></div>
-  <div class="kpi g"><div class="kl">FDI 2026E</div><div class="kv">$22bn</div><div class="ks">+52% vs 2025</div></div>
-  <div class="kpi r"><div class="kl">Déficit fiscal 2026E</div><div class="kv">-2.4%</div><div class="ks">del PIB · EIU jun'26</div></div>
-</div>
+  <!-- KPIs -->
+  <div class="kpi-row" style="margin-top:1.5rem">
+    <div class="kpi"><div class="kl">PIB real 2025</div><div class="kv">2.5%</div><div class="ks">Cierre sólido</div></div>
+    <div class="kpi r"><div class="kl">PIB real 2026E</div><div class="kv">1.4%</div><div class="ks">Año de ajuste</div></div>
+    <div class="kpi g"><div class="kl">PIB real 2027E</div><div class="kv">2.9%</div><div class="ks">Rebote esperado</div></div>
+    <div class="kpi r"><div class="kl">Inflación 2026E</div><div class="kv">3.7%</div><div class="ks">Techo rango BCCh</div></div>
+    <div class="kpi"><div class="kl">Tasa BCCh</div><div class="kv">4.5%</div><div class="ks">Terminal 4.25% en 2027</div></div>
+    <div class="kpi o"><div class="kl">Cobre COMEX</div><div class="kv">$6.65</div><div class="ks">Por libra · récord jun'26</div></div>
+    <div class="kpi g"><div class="kl">FDI 2026E</div><div class="kv">$22bn</div><div class="ks">+52% vs 2025</div></div>
+    <div class="kpi"><div class="kl">Déficit fiscal 2026E</div><div class="kv">-2.5%</div><div class="ks">del PIB</div></div>
+  </div>
 
-<!-- SEC 1: SOLIDEZ 2025 -->
-<div class="sec-hdr"><div class="sec-num">1</div><div class="sec-title">Cierre de 2025: La Mejor Base de Partida de la Región</div><div class="sec-line"></div></div>
+  <!-- Síntesis -->
+  <div class="dark-box">
+    <p class="ey">Síntesis ejecutiva · Junio 2026</p>
+    <p class="lead">Chile es la economía más sólida de América Latina en términos institucionales y financieros, con el gobierno más pro-mercado en 35 años. Sin embargo, 2026 es un año de ajuste, no de aceleración.</p>
+    <p class="body">El escenario exige distinguir entre los factores de corto plazo que generan volatilidad —guerra de Irán, ajuste fiscal, inflación— y las tendencias estructurales de mediano plazo que posicionan a Chile como el destino de inversión más atractivo de América Latina. Navega las secciones para explorar cada dimensión.</p>
+  </div>
 
-<div class="callout">
-  <h4>Chile cerró 2025 con el sistema financiero más sólido de América Latina</h4>
-  <p>PIB +2.5%, banca con rentabilidad sobre promedio histórico y colchones de capital holgados (BCCh, IEF 1S2026), Banco Central independiente, CMF activa, deuda pública en 42.8% del PIB. El país ocupa el puesto nº2 global en política hacia la inversión extranjera según el EIU. Es la única economía latinoamericana en el programa de visa waiver de EE.UU. En 2025, el crecimiento fue liderado por comercio, servicios personales, industria manufacturera e inversión; la minería y energía underperformed transitoriamente.</p>
-</div>
-
-<div class="cgrid">
-  <div class="cw">
-    <div class="ct">PIB real Chile vs. región y mundo</div>
-    <div class="cs">% de variación anual (2024–2030E) · EIU Junio 2026</div>
-    <div class="leg">
-      <span class="leg-i"><span class="dot" style="background:#216686"></span>Chile</span>
-      <span class="leg-i"><span class="dot" style="background:#A6A6A6"></span>Mundo</span>
-      <span class="leg-i"><span class="dot" style="background:#DC7528"></span>Emergentes</span>
+  <!-- Cards de navegación -->
+  <div class="summary-grid">
+    <div class="sum-card" onclick="showSection('macro', document.querySelector('[onclick*=macro]'))">
+      <div class="sum-card-top">
+        <span class="sum-card-icon">📈</span>
+        <span class="sum-card-arrow">→</span>
+      </div>
+      <h3>Macro</h3>
+      <p>Crecimiento, inflación, tipo de cambio, balance fiscal y drivers del PIB 2026–2027.</p>
+      <span class="sum-badge badge-orange">PIB 1.4% en 2026 · Ajuste fiscal</span>
     </div>
-    <div style="position:relative;height:220px"><canvas id="gdpChart"></canvas></div>
-  </div>
-  <div class="cw">
-    <div class="ct">Sistema bancario: crédito total</div>
-    <div class="cs">US$ miles de millones (2024–2030E) · EIU / OCDE</div>
-    <div class="leg">
-      <span class="leg-i"><span class="dot" style="background:#216686"></span>Préstamos LP</span>
-      <span class="leg-i"><span class="dot" style="background:#DC7528"></span>Préstamos CP</span>
+    <div class="sum-card" onclick="showSection('politica', document.querySelector('[onclick*=politica]'))">
+      <div class="sum-card-top">
+        <span class="sum-card-icon">🏛</span>
+        <span class="sum-card-arrow">→</span>
+      </div>
+      <h3>Política</h3>
+      <p>Gobierno Kast, reformas del omnibus bill, estado de avance y timeline estimado.</p>
+      <span class="sum-badge badge-green">Gobierno más pro-mercado desde 1990</span>
     </div>
-    <div style="position:relative;height:220px"><canvas id="creditChart"></canvas></div>
-  </div>
-</div>
-
-<div class="grid">
-  <div class="card succ">
-    <div class="tag g">Sistema financiero</div>
-    <h3>Banca chilena: rentabilidad en máximos históricos</h3>
-    <p>El Informe de Estabilidad Financiera del BCCh (1S2026) confirma que los bancos chilenos tienen indicadores de rentabilidad por encima de sus promedios históricos, fuentes de financiamiento estables y colchones de capital suficientes. El crédito total pasa de US$298bn en 2025 a US$416bn en 2030E (+8% anual). El sistema es el más profundo y sofisticado de América Latina tras cuatro décadas de reformas liberalizadoras.</p>
-    <div class="impl g">El sistema bancario chileno es robusto y bien capitalizado — el más desarrollado de la región en términos relativos. Bajo riesgo sistémico para operaciones financieras.</div>
-  </div>
-  <div class="card succ">
-    <div class="tag g">Ranking EIU</div>
-    <h3>Nº2 global en política hacia la inversión extranjera</h3>
-    <p>El EIU posiciona a Chile en el puesto 16 de 82 países en entorno global de negocios (2026–2030), nº2 en política hacia inversión extranjera, nº10 en macroeconomía, nº10 en política hacia empresa privada. Los puntos débiles son mercado de oportunidades (69) y mercado laboral (41). La Ley Fintech ya está vigente y el Open Finance (SFA) entra en operación en julio 2027.</p>
-    <div class="impl g">Perfil de riesgo país superior al promedio emergente. Las métricas históricas de Chile son sólidas, con ajuste por el deterioro cíclico de 2026.</div>
-  </div>
-</div>
-
-<!-- SEC 2: AJUSTE 2026 -->
-<div class="sec-hdr"><div class="sec-num">2</div><div class="sec-title">El Ajuste de 2026: Crecimiento Comprimido por Tres Shocks</div><div class="sec-line"></div></div>
-
-<div class="cgrid">
-  <div class="cw">
-    <div class="ct">Descomposición del crecimiento del PIB</div>
-    <div class="cs">Contribución en puntos porcentuales (2025–2027E) · EIU / BCCh IPoM junio 2026</div>
-    <div class="leg">
-      <span class="leg-i"><span class="dot" style="background:#216686"></span>Consumo privado</span>
-      <span class="leg-i"><span class="dot" style="background:#1D7D54"></span>Inversión fija</span>
-      <span class="leg-i"><span class="dot" style="background:#A6A6A6"></span>Gob. + existencias</span>
-      <span class="leg-i"><span class="dot" style="background:#DC7528"></span>Balanza externa</span>
+    <div class="sum-card" onclick="showSection('sectores', document.querySelector('[onclick*=sectores]'))">
+      <div class="sum-card-top">
+        <span class="sum-card-icon">⛏</span>
+        <span class="sum-card-arrow">→</span>
+      </div>
+      <h3>Sectores</h3>
+      <p>Cobre en récord histórico, pipeline de inversión por sector, litio, energía renovable e hidrógeno verde.</p>
+      <span class="sum-badge badge-blue">Pipeline US$87.7bn · 2026–2030</span>
     </div>
-    <div style="position:relative;height:230px"><canvas id="gdpCompChart"></canvas></div>
-  </div>
-  <div class="cw">
-    <div class="ct">Drivers del crecimiento por sector</div>
-    <div class="cs">Contribución estimada al PIB 2026 por sector · BCCh / EIU / Banco Mundial</div>
-    <div class="leg">
-      <span class="leg-i"><span class="dot" style="background:#216686"></span>Minería</span>
-      <span class="leg-i"><span class="dot" style="background:#1D7D54"></span>Inversión privada</span>
-      <span class="leg-i"><span class="dot" style="background:#DC7528"></span>Servicios/comercio</span>
-      <span class="leg-i"><span class="dot" style="background:#CD4F4F"></span>Gasto público</span>
-      <span class="leg-i"><span class="dot" style="background:#A6A6A6"></span>Exportaciones netas</span>
+    <div class="sum-card" onclick="showSection('financiero', document.querySelector('[onclick*=financiero]'))">
+      <div class="sum-card-top">
+        <span class="sum-card-icon">🏦</span>
+        <span class="sum-card-arrow">→</span>
+      </div>
+      <h3>Sector Financiero</h3>
+      <p>Sistema bancario, tasas, spreads, Open Finance y perspectivas del crédito 2026–2030.</p>
+      <span class="sum-badge badge-green">Crédito total: $298bn → $416bn en 2030</span>
     </div>
-    <div style="position:relative;height:230px"><canvas id="driversChart"></canvas></div>
-  </div>
-</div>
-
-<div class="grid">
-  <div class="card warn">
-    <div class="tag o">Shock externo + oferta interna <span class="update-badge">IPoM Jun'26</span></div>
-    <h3>El IPoM de junio redujo el rango del PIB 2026 a 1.0–1.75%</h3>
-    <p>El BCCh revisó a la baja el rango de crecimiento de 2026 por segunda vez consecutiva: de 2.0–3.0% (dic'25) a 1.5–2.5% (mar'26) y ahora a <strong>1.0–1.75%</strong> (jun'26). El dato de Q1-2026 sorprendió negativamente: el PIB se contrajo 0.5% anual, explicado en gran parte por el colapso de sectores de recursos naturales — minería del cobre afectada por menor ley del mineral y mantenciones, caída de la producción frutícola y retroceso de la pesca. La FBCF retrocedió 3.8% trimestral. El desempleo subió a 9.1% en abril. Para 2027, el rango se elevó a 2.0–3.0% impulsado por la recuperación de la inversión privada (+5.0%) y la reversión de los shocks de oferta.</p>
-    <div class="impl o">La minería underperforming en el corto plazo afecta los ingresos de Codelco y el tipo de cambio, pero el pipeline de inversión de mediano plazo no se altera. La recuperación de 2027 depende de la normalización de los recursos naturales y la FBCF.</div>
-  </div>
-  <div class="card bl">
-    <div class="tag">Ajuste fiscal <span class="update-badge">Actualizado</span></div>
-    <h3>Kast recorta gasto pero la deuda sube: la tensión fiscal de 2026</h3>
-    <p>El ministro Quiroz ejecutó el recorte del 3% del gasto bruto en todos los ministerios (oficio marzo 2026). Meta total US$4,000M. Sin embargo, el gobierno solicitó al Congreso autorización para emitir US$6,200M adicionales en deuda este año, por encima del presupuesto aprobado de US$17,400M. El EIU revisó a la baja el déficit a <strong>-2.4% del PIB</strong> en 2026 (desde -2.5%), pero elevó la trayectoria de deuda pública a <strong>44.7% del PIB en 2026</strong>, frente al 42.2% previo, con riesgo de superar el umbral prudencial del 45% en 2027–2028 según las reglas fiscales chilenas.</p>
-    <div class="impl o">La disciplina fiscal de corto plazo es positiva, pero el aumento de deuda estructural exige monitoreo. La deuda se proyecta en 45.2% del PIB en 2027 — al límite de la prudencia fiscal institucional establecida por el Consejo Fiscal Autónomo.</div>
-  </div>
-</div>
-
-<div class="cgrid">
-  <div class="cw">
-    <div class="ct">Balance fiscal y deuda pública <span style="font-size:10px;font-weight:600;color:var(--orange);text-transform:none;letter-spacing:0">· revisado jun'26</span></div>
-    <div class="cs">% del PIB (2023–2030E) · EIU Junio 2026</div>
-    <div class="leg">
-      <span class="leg-i"><span class="dot" style="background:#CD4F4F"></span>Balance fiscal</span>
-      <span class="leg-i"><span class="dot" style="background:#216686"></span>Deuda pública bruta</span>
+    <div class="sum-card" onclick="showSection('riesgos', document.querySelector('[onclick*=riesgos]'))">
+      <div class="sum-card-top">
+        <span class="sum-card-icon">⚠️</span>
+        <span class="sum-card-arrow">→</span>
+      </div>
+      <h3>Riesgos</h3>
+      <p>Aranceles al cobre, guerra de Irán, riesgo social, reformas diluidas y caída del precio del cobre.</p>
+      <span class="sum-badge badge-red">Informe Commerce EE.UU. · fin de junio</span>
     </div>
-    <div style="position:relative;height:220px"><canvas id="fiscalChart"></canvas></div>
   </div>
-  <div class="cw">
-    <div class="ct">Inflación y tasa de política monetaria</div>
-    <div class="cs">% promedio anual (2024–2030E) · EIU / BCCh</div>
-    <div class="leg">
-      <span class="leg-i"><span class="dot" style="background:#CD4F4F"></span>Inflación CPI</span>
-      <span class="leg-i"><span class="dot" style="background:#216686"></span>Tasa BCCh</span>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECCIÓN: MACRO
+══════════════════════════════════════════════ -->
+<div id="sec-macro" class="section">
+<div class="container">
+
+  <div class="sec-hdr"><div class="sec-num">1</div><div class="sec-title">Cierre de 2025: La Mejor Base de Partida de la Región</div><div class="sec-line"></div></div>
+
+  <div class="callout">
+    <h4>Chile cerró 2025 con el sistema financiero más sólido de América Latina</h4>
+    <p>PIB +2.5%, banca con rentabilidad sobre promedio histórico y colchones de capital holgados (BCCh, IEF 1S2026), Banco Central independiente, CMF activa, deuda pública en 41.8% del PIB. El país ocupa el puesto nº2 global en política hacia la inversión extranjera según el EIU. Es la única economía latinoamericana en el programa de visa waiver de EE.UU.</p>
+  </div>
+
+  <div class="cgrid">
+    <div class="cw">
+      <div class="ct">PIB real Chile vs. región y mundo</div>
+      <div class="cs">% de variación anual (2024–2030E) · EIU</div>
+      <div class="leg">
+        <span class="leg-i"><span class="dot" style="background:#216686"></span>Chile</span>
+        <span class="leg-i"><span class="dot" style="background:#A6A6A6"></span>Mundo</span>
+        <span class="leg-i"><span class="dot" style="background:#DC7528"></span>Emergentes</span>
+      </div>
+      <div style="position:relative;height:220px"><canvas id="gdpChart"></canvas></div>
     </div>
-    <div style="position:relative;height:220px"><canvas id="inflationChart"></canvas></div>
-  </div>
-</div>
-
-<!-- SEC 3: FAMILIAS Y EMPLEO -->
-<div class="sec-hdr"><div class="sec-num">3</div><div class="sec-title">Familias y Empleo: Presión Real, Resiliencia Estructural</div><div class="sec-line"></div></div>
-
-<div class="kpi-row">
-  <div class="kpi r"><div class="kl">Desempleo abr'26</div><div class="kv">9.1%</div><div class="ks">Sube desde 8.1% en 2025</div></div>
-  <div class="kpi o"><div class="kl">Salario real 2026E</div><div class="kv">+1.2%</div><div class="ks">vs inflación 3.6%</div></div>
-  <div class="kpi"><div class="kl">Ing. disponible 2026E</div><div class="kv">+2.1%</div><div class="ks">real, desacelera</div></div>
-  <div class="kpi"><div class="kl">GDP per cápita PPP</div><div class="kv">$39,358</div><div class="ks">3º más alto LATAM</div></div>
-  <div class="kpi"><div class="kl">Gasto hogares 2026E</div><div class="kv">$233bn</div><div class="ks">+14% nominal vs 2025</div></div>
-  <div class="kpi g"><div class="kl">Desempleo 2029E</div><div class="kv">7.7%</div><div class="ks">Con reformas laborales</div></div>
-</div>
-
-<div class="cgrid">
-  <div class="cw">
-    <div class="ct">Salarios reales y consumo privado</div>
-    <div class="cs">% variación anual (2023–2027E) · EIU</div>
-    <div class="leg">
-      <span class="leg-i"><span class="dot" style="background:#216686"></span>Salario real</span>
-      <span class="leg-i"><span class="dot" style="background:#DC7528"></span>Consumo privado real</span>
+    <div class="cw">
+      <div class="ct">Descomposición del crecimiento del PIB</div>
+      <div class="cs">Contribución en pp (2025–2027E) · EIU / BCCh IPoM</div>
+      <div class="leg">
+        <span class="leg-i"><span class="dot" style="background:#216686"></span>Consumo privado</span>
+        <span class="leg-i"><span class="dot" style="background:#1D7D54"></span>Inversión fija</span>
+        <span class="leg-i"><span class="dot" style="background:#A6A6A6"></span>Gob. + exist.</span>
+        <span class="leg-i"><span class="dot" style="background:#DC7528"></span>Bal. externa</span>
+      </div>
+      <div style="position:relative;height:220px"><canvas id="gdpCompChart"></canvas></div>
     </div>
-    <div style="position:relative;height:210px"><canvas id="wagesChart"></canvas></div>
   </div>
-  <div class="cw">
-    <div class="ct">Gasto hogares por categoría</div>
-    <div class="cs">US$ miles de millones (2025–2027E) · EIU</div>
-    <div class="leg">
-      <span class="leg-i"><span class="dot" style="background:#216686"></span>Alimentos</span>
-      <span class="leg-i"><span class="dot" style="background:#1D7D54"></span>Vivienda/energía</span>
-      <span class="leg-i"><span class="dot" style="background:#CD4F4F"></span>Transporte/telecom</span>
-      <span class="leg-i"><span class="dot" style="background:#DC7528"></span>Salud</span>
+
+  <div class="sec-hdr"><div class="sec-num">2</div><div class="sec-title">El Ajuste de 2026: Dos Shocks Simultáneos</div><div class="sec-line"></div></div>
+
+  <div class="cgrid">
+    <div class="cw">
+      <div class="ct">Drivers del crecimiento por sector</div>
+      <div class="cs">Contribución estimada al PIB 2026 · BCCh / EIU / Banco Mundial</div>
+      <div class="leg">
+        <span class="leg-i"><span class="dot" style="background:#216686"></span>Minería</span>
+        <span class="leg-i"><span class="dot" style="background:#1D7D54"></span>Inversión privada</span>
+        <span class="leg-i"><span class="dot" style="background:#DC7528"></span>Servicios/comercio</span>
+        <span class="leg-i"><span class="dot" style="background:#CD4F4F"></span>Gasto público</span>
+        <span class="leg-i"><span class="dot" style="background:#A6A6A6"></span>Exp. netas</span>
+      </div>
+      <div style="position:relative;height:220px"><canvas id="driversChart"></canvas></div>
     </div>
-    <div style="position:relative;height:210px"><canvas id="houseChart"></canvas></div>
+    <div class="cw">
+      <div class="ct">Inflación y tasa de política monetaria</div>
+      <div class="cs">% promedio anual (2024–2030E) · EIU / BCCh</div>
+      <div class="leg">
+        <span class="leg-i"><span class="dot" style="background:#CD4F4F"></span>Inflación CPI</span>
+        <span class="leg-i"><span class="dot" style="background:#216686"></span>Tasa BCCh</span>
+      </div>
+      <div style="position:relative;height:220px"><canvas id="inflationChart"></canvas></div>
+    </div>
   </div>
+
+  <div class="grid">
+    <div class="card warn">
+      <div class="tag o">Shock externo</div>
+      <h3>La guerra de Irán redujo el rango del PIB a 1.5–2.5%</h3>
+      <p>El IPoM de marzo 2026 del BCCh redujo el rango de crecimiento por tres factores: (1) petróleo por encima de US$95/barril, (2) ajuste fiscal de US$3,800M anunciado por Kast en marzo, y (3) menor desempeño de la minería. El consumo privado sigue creciendo pero a menor ritmo.</p>
+      <div class="impl o">La minería underperforming en el corto plazo afecta los ingresos de Codelco y el tipo de cambio, pero no el pipeline de inversión de mediano plazo.</div>
+    </div>
+    <div class="card bl">
+      <div class="tag">Ajuste fiscal</div>
+      <h3>Kast recorta US$4,000M: cómo y dónde</h3>
+      <p>El ministro Quiroz firmó en marzo 2026 un recorte transversal del 3% del gasto bruto. Los ministerios más afectados: Educación ($524bn CLP), Salud ($517bn CLP), Vivienda ($200bn CLP). También se anunció fusión de ministerios para ahorro estructural adicional.</p>
+      <div class="impl o">El recorte arrastra el PIB en 2026 pero mejora el déficit fiscal (3.0% → 2.5% del PIB). Señal positiva de disciplina fiscal.</div>
+    </div>
+  </div>
+
+  <div class="cgrid">
+    <div class="cw">
+      <div class="ct">Balance fiscal y deuda pública</div>
+      <div class="cs">% del PIB (2023–2030E) · EIU</div>
+      <div class="leg">
+        <span class="leg-i"><span class="dot" style="background:#CD4F4F"></span>Balance fiscal</span>
+        <span class="leg-i"><span class="dot" style="background:#216686"></span>Deuda pública bruta</span>
+      </div>
+      <div style="position:relative;height:220px"><canvas id="fiscalChart"></canvas></div>
+    </div>
+    <div class="cw">
+      <div class="ct">Salarios reales y consumo privado</div>
+      <div class="cs">% variación anual (2023–2027E) · EIU</div>
+      <div class="leg">
+        <span class="leg-i"><span class="dot" style="background:#216686"></span>Salario real</span>
+        <span class="leg-i"><span class="dot" style="background:#DC7528"></span>Consumo privado real</span>
+      </div>
+      <div style="position:relative;height:220px"><canvas id="wagesChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="sec-hdr"><div class="sec-num">3</div><div class="sec-title">Familias y Empleo</div><div class="sec-line"></div></div>
+
+  <div class="kpi-row">
+    <div class="kpi r"><div class="kl">Desempleo 2026E</div><div class="kv">8.7%</div><div class="ks">Sube desde 8.1% en 2025</div></div>
+    <div class="kpi o"><div class="kl">Salario real 2026E</div><div class="kv">+1.2%</div><div class="ks">vs inflación 3.7%</div></div>
+    <div class="kpi"><div class="kl">GDP per cápita PPP</div><div class="kv">$39,358</div><div class="ks">3º más alto LATAM</div></div>
+    <div class="kpi"><div class="kl">Gasto hogares 2026E</div><div class="kv">$233bn</div><div class="ks">+14% nominal vs 2025</div></div>
+    <div class="kpi g"><div class="kl">Desempleo 2029E</div><div class="kv">7.7%</div><div class="ks">Con reformas laborales</div></div>
+  </div>
+
+  <div class="cgrid">
+    <div class="cw">
+      <div class="ct">Gasto hogares por categoría</div>
+      <div class="cs">US$ miles de millones (2025–2027E) · EIU</div>
+      <div class="leg">
+        <span class="leg-i"><span class="dot" style="background:#216686"></span>Alimentos</span>
+        <span class="leg-i"><span class="dot" style="background:#1D7D54"></span>Vivienda/energía</span>
+        <span class="leg-i"><span class="dot" style="background:#CD4F4F"></span>Transporte/telecom</span>
+        <span class="leg-i"><span class="dot" style="background:#DC7528"></span>Salud</span>
+      </div>
+      <div style="position:relative;height:210px"><canvas id="houseChart"></canvas></div>
+    </div>
+    <div class="cw">
+      <div class="ct">Desempleo y salarios reales</div>
+      <div class="cs">% (2023–2030E) · EIU</div>
+      <div class="leg">
+        <span class="leg-i"><span class="dot" style="background:#CD4F4F"></span>Desempleo</span>
+        <span class="leg-i"><span class="dot" style="background:#216686"></span>Salario real (eje der.)</span>
+      </div>
+      <div style="position:relative;height:210px"><canvas id="employChart"></canvas></div>
+    </div>
+  </div>
+
+</div>
 </div>
 
-<div class="grid">
-  <div class="card warn">
-    <div class="tag o">Costo de vida</div>
-    <h3>Combustibles +20% en un mes: el mayor shock al ingreso real en años</h3>
-    <p>En marzo 2026, el alza de precios de combustibles se trasladó directo a transporte, alimentos y vivienda. La inflación llegó al 4.0% en abril y se mantuvo en 3.9% en mayo —justo al techo del rango BCCh— erosionando salarios reales que crecen apenas 1.2%. Las encuestas muestran que la inflación superó al crimen como primera preocupación de los chilenos por primera vez desde 2023. El gobierno activó el Fondo de Estabilización del Petróleo (de US$5M a US$60M). El traspaso del shock al IPC subyacente fue acotado (3.2% en mayo), en línea con promedios históricos, lo que el BCCh interpreta positivamente.</p>
-    <div class="impl r">El estrés financiero de hogares de ingreso medio y bajo aumenta en 2026. El consumo privado y los sectores ligados a él son los más vulnerables al ciclo actual.</div>
+<!-- ══════════════════════════════════════════════
+     SECCIÓN: POLÍTICA
+══════════════════════════════════════════════ -->
+<div id="sec-politica" class="section">
+<div class="container">
+
+  <div class="sec-hdr"><div class="sec-num">6</div><div class="sec-title">Gobierno Kast: La Ventana de Inversión Más Amplia en 15 Años</div><div class="sec-line"></div></div>
+
+  <div class="grid">
+    <div class="card bl">
+      <div class="tag">Kast</div>
+      <h3>El gobierno más pro-mercado desde la transición democrática</h3>
+      <p>José Antonio Kast asumió el 11 de marzo 2026 con la agenda más liberal desde 1990: reducir impuestos, desregular, acelerar permisos mineros, expandir PPPs y atraer IED. Su gabinete —dominado 70% por independientes tecnócratas— transmite pragmatismo sobre ideología. En su primera cadena nacional (15 abril 2026) presentó el omnibus bill como "proyecto estrella" con ~40 iniciativas.</p>
+      <div class="impl g">El FDI proyectado salta de US$14.5bn (2025) a US$22.2bn (2026E) y US$30.7bn en 2030E. Existe una ventana de 2–3 años para posicionarse en los sectores del próximo ciclo inversor.</div>
+    </div>
+    <div class="card warn">
+      <div class="tag o">Gobernabilidad</div>
+      <h3>Congreso fragmentado: el PDG es el kingmaker hasta 2029</h3>
+      <p>Kast tiene mayoría slim en Diputados (90/155) pero cae corto en el Senado (25/50). El populista PDG de Franco Parisi tiene 14 diputados y 1 senador —ambos decisivos. Ya extrajo concesiones (IVA en medicamentos y pañales). Bloomberg (3 jun 2026) reporta cuestionamientos incluso de legisladores oficialistas al omnibus bill en el Senado.</p>
+      <div class="impl o">Las reformas serán aprobadas pero probablemente diluidas. El impacto en PIB potencial llegará con retraso a 2027–2028.</div>
+    </div>
   </div>
-  <div class="card bl">
-    <div class="tag">Empleo y formalización</div>
-    <h3>Desempleo en máximo del ciclo; recomposición hacia empleo informal</h3>
-    <p>El desempleo subió a 9.1% en abril 2026 (8.1% promedio 2025), empujado por la desaceleración del consumo y los servicios. El IPoM de junio identifica una señal preocupante: la creación de empleo es débil y la recomposición se da desde empleo formal hacia informal. La reforma de "crédito salarial del 15%" para empresas que contraten formalmente entre 1 salario mínimo y 12 UTM busca revertir esta tendencia. Chile tiene uno de los índices de informalidad más altos de la OCDE.</p>
-    <div class="impl g">La formalización laboral ampliaría la base de trabajadores con contratos formales e historial de ingresos verificable — efecto positivo para el acceso al financiamiento a mediano plazo.</div>
+
+  <div class="sec-hdr" style="margin-top:1rem"><div class="sec-title" style="font-size:1.1rem">Estado de las reformas de Kast: avance, timeline y relevancia</div></div>
+
+  <div class="timeline">
+    <div class="tl-row hdr">
+      <div class="tl-cell">Reforma</div>
+      <div class="tl-cell">Estado</div>
+      <div class="tl-cell">Timeline estimado</div>
+      <div class="tl-cell">Relevancia</div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-cell"><strong>Recorte 3% gasto ministerios</strong><span style="font-size:11px;color:#888">Decreto ejecutivo</span></div>
+      <div class="tl-cell"><span class="pill pl">Ejecutada</span><div class="prog-bar"><div class="prog-fill" style="width:100%;background:#1D7D54"></div></div></div>
+      <div class="tl-cell" style="color:var(--text)">Implementado en marzo 2026. US$1,400M concretados al 15 mayo. Meta total US$4,000M para cierre 2026. Fue decreto ejecutivo — sin Congreso.</div>
+      <div class="tl-cell">Déficit fiscal baja de 3.0% a 2.5% del PIB. Señal positiva de disciplina fiscal.</div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-cell"><strong>Permisos ambientales (SEIA)</strong><span style="font-size:11px;color:#888">2 años → 6 meses</span></div>
+      <div class="tl-cell"><span class="pill pl">Aprobada Cámara</span><div class="prog-bar"><div class="prog-fill" style="width:75%;background:#1D7D54"></div></div></div>
+      <div class="tl-cell" style="color:var(--text)">Aprobada en Cámara el 20 mayo 2026. En Senado en junio. Estimado promulgación: <strong>sept–oct 2026</strong>.</div>
+      <div class="tl-cell">Acelera el timeline de proyectos mineros y renovables. Reduce tiempo al primer desembolso.</div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-cell"><strong>Reducción impuesto corporativo</strong><span style="font-size:11px;color:#888">27% → 23% para 2029</span></div>
+      <div class="tl-cell"><span class="pill pm">En Senado</span><div class="prog-bar"><div class="prog-fill" style="width:55%;background:#DC7528"></div></div></div>
+      <div class="tl-cell" style="color:var(--text)">Aprobada en Cámara mayo 2026. Resistencia en Senado incluso de oficialistas. Estimado: <strong>3T2026</strong>. Reducción gradual: 26% en 2027, 24% en 2028, 23% en 2029.</div>
+      <div class="tl-cell">Mejora rentabilidad corporativa. Puede aumentar demanda de crédito para reinversión.</div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-cell"><strong>Estabilidad tributaria 25 años</strong><span style="font-size:11px;color:#888">Proyectos +US$50M</span></div>
+      <div class="tl-cell"><span class="pill pm">En Senado</span><div class="prog-bar"><div class="prog-fill" style="width:55%;background:#DC7528"></div></div></div>
+      <div class="tl-cell" style="color:var(--text)">Senado cuestiona el plazo de 25 años (puede negociarse a 15–20 años). Estimado: <strong>3T2026</strong> con posible reducción de plazo.</div>
+      <div class="tl-cell">Clave para la bankabilidad de grandes proyectos. Reduce el riesgo regulatorio en estructuras de deuda a largo plazo.</div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-cell"><strong>Eliminación 10% ganancias bursátiles</strong><span style="font-size:11px;color:#888">Mercado de capitales</span></div>
+      <div class="tl-cell"><span class="pill pm">En Senado</span><div class="prog-bar"><div class="prog-fill" style="width:50%;background:#DC7528"></div></div></div>
+      <div class="tl-cell" style="color:var(--text)">Menor resistencia política. IPSA ya en máximos históricos. Estimado: <strong>3T2026</strong>.</div>
+      <div class="tl-cell">Activa el mercado bursátil. Oportunidades en colocaciones de deuda corporativa y project bonds.</div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-cell"><strong>Formalización laboral (crédito 15%)</strong><span style="font-size:11px;color:#888">Incentivo contratación formal</span></div>
+      <div class="tl-cell"><span class="pill ph">Propuesta</span><div class="prog-bar"><div class="prog-fill" style="width:25%;background:#CD4F4F"></div></div></div>
+      <div class="tl-cell" style="color:var(--text)">PDG tiene reservas sobre los criterios de elegibilidad. Estimado: <strong>4T2026 o 1T2027</strong>.</div>
+      <div class="tl-cell">Amplía la base de trabajadores formales con historial de ingresos verificable.</div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-cell"><strong>Expansión PPP a servicios sociales</strong><span style="font-size:11px;color:#888">Hospitales, cárceles, vivienda</span></div>
+      <div class="tl-cell"><span class="pill ph">Propuesta</span><div class="prog-bar"><div class="prog-fill" style="width:15%;background:#CD4F4F"></div></div></div>
+      <div class="tl-cell" style="color:var(--text)">No ingresada formalmente al Congreso. Alta complejidad y resistencia de oposición. Estimado: <strong>2027–2028</strong>.</div>
+      <div class="tl-cell">Abre un mercado nuevo de inversión privada en servicios sociales, actualmente reservado al Estado.</div>
+    </div>
   </div>
-  <div class="card risk">
-    <div class="tag r">Riesgo social</div>
-    <h3>Precedente 2019: la presión inflacionaria puede escalar políticamente</h3>
-    <p>Chile vivió su mayor crisis política en 30 años en octubre 2019, detonada por un alza de 30 pesos en el metro. El patrón actual —presión inflacionaria sobre hogares de ingreso medio, gobierno de perfil conservador, sindicatos y movimientos de izquierda con incentivos para capitalizar el malestar— es análogo. Ya hubo protestas esporádicas en abril–mayo 2026. La eventual desescalada del conflicto iraní (ceasefire anunciado el 19 de junio) podría aliviar parte de la presión.</p>
-    <div class="impl r">Es el riesgo de cola más importante para el escenario base positivo de 2027. Un escenario de inestabilidad social afecta la confianza empresarial, el tipo de cambio y la agenda legislativa.</div>
-  </div>
+
+</div>
 </div>
 
-<!-- SEC 4: COBRE -->
-<div class="sec-hdr"><div class="sec-num">4</div><div class="sec-title">El Cobre: Récord Histórico y Amortiguador Natural</div><div class="sec-line"></div></div>
+<!-- ══════════════════════════════════════════════
+     SECCIÓN: SECTORES
+══════════════════════════════════════════════ -->
+<div id="sec-sectores" class="section">
+<div class="container">
 
-<div class="callout">
-  <h4>US$6.65 por libra en junio 2026: el cobre nunca había estado tan alto</h4>
-  <p>La demanda estructural por electrificación global, data centers de inteligencia artificial y vehículos eléctricos impulsa el precio del cobre a niveles récord. El BCCh elevó su proyección para el precio del cobre a US$5.80/libra BML promedio 2026 (desde US$5.40 en marzo). Chile produce el 24% del cobre mundial y es el mayor exportador de cobre refinado a EE.UU. (65% de sus importaciones). El precio récord genera ingresos fiscales adicionales para Codelco y el fisco chileno, y sostuvo el peso frente al shock del petróleo. Es el amortiguador natural más potente que tiene Chile.</p>
-</div>
+  <div class="sec-hdr"><div class="sec-num">4</div><div class="sec-title">El Cobre: Récord Histórico y Amortiguador Natural</div><div class="sec-line"></div></div>
 
-<div class="cgrid">
-  <div class="cw">
-    <div class="ct">Tipo de cambio CLP/USD</div>
-    <div class="cs">Promedio anual (2024–2030E) · EIU Junio 2026</div>
-    <div class="leg"><span class="leg-i"><span class="dot" style="background:#216686"></span>CLP por US$1</span></div>
-    <div style="position:relative;height:200px"><canvas id="fxChart"></canvas></div>
+  <div class="callout">
+    <h4>US$6.65 por libra en junio 2026: el cobre nunca había estado tan alto</h4>
+    <p>Chile produce el 24% del cobre mundial y es el mayor exportador de cobre refinado a EE.UU. (65% de sus importaciones). El precio récord genera ingresos fiscales adicionales para Codelco y el fisco, y sostiene el peso frente al shock del petróleo. Es el amortiguador natural más potente de Chile.</p>
   </div>
-  <div class="cw">
-    <div class="ct">Inversión extranjera directa</div>
-    <div class="cs">Flujos anuales en US$ bn (2021–2030E) · EIU</div>
-    <div class="leg"><span class="leg-i"><span class="dot" style="background:#1D7D54"></span>FDI inflows</span></div>
-    <div style="position:relative;height:200px"><canvas id="fdiChart"></canvas></div>
-  </div>
-</div>
 
-<div class="grid">
-  <div class="card gr">
-    <div class="tag g">Cobre</div>
-    <h3>Pipeline de US$104.5bn en minería de cobre (2025–2034)</h3>
-    <p>Cochilco identifica 13 proyectos de expansión de cobre en tramitación ambiental acelerada bajo el nuevo gobierno. La meta Kast es elevar la producción a 6 millones de toneladas/año en 4–5 años. Freeport El Abra tiene una expansión de US$7.5bn en proceso. Según la CBC, la minería representa el 40.6% del pipeline total de inversión 2026–2030 (US$35,569M de un total de US$87,702M), y ya opera con 70% de energía renovable (Cochilco 2026). El IPoM de junio elevó +33% los montos previstos de inversión en grandes proyectos para 2026–2029.</p>
-    <div class="impl g">Oportunidades directas de project finance y líneas de crédito sindicado. Hay oportunidad de posicionamiento en estructuración y distribución de deuda para estos proyectos con los mejores perfiles crediticios del país.</div>
+  <div class="cgrid">
+    <div class="cw">
+      <div class="ct">Tipo de cambio CLP/USD</div>
+      <div class="cs">Promedio anual (2024–2030E) · EIU</div>
+      <div class="leg"><span class="leg-i"><span class="dot" style="background:#216686"></span>CLP por US$1</span></div>
+      <div style="position:relative;height:200px"><canvas id="fxChart"></canvas></div>
+    </div>
+    <div class="cw">
+      <div class="ct">Inversión extranjera directa</div>
+      <div class="cs">Flujos anuales en US$ bn (2021–2030E) · EIU</div>
+      <div class="leg"><span class="leg-i"><span class="dot" style="background:#1D7D54"></span>FDI inflows</span></div>
+      <div style="position:relative;height:200px"><canvas id="fdiChart"></canvas></div>
+    </div>
   </div>
-  <div class="card warn">
-    <div class="tag o">Riesgo urgente</div>
-    <h3>Aranceles EE.UU. al cobre: informe del Dept. de Comercio a fin de junio</h3>
-    <p>Trump propuso en junio 2026 un arancel del 12.5% a productos chilenos bajo Sección 301 ("trabajo forzoso"). El cobre refinado está temporalmente excluido, pero el Departamento de Comercio tiene hasta fin de junio para emitir su informe. Si el cobre queda incluido, el impacto sería sistémico: afecta el tipo de cambio, los ingresos fiscales y toda la cadena productiva. Chile es el mayor proveedor de cobre refinado de EE.UU. con 65% de su mercado. El acuerdo Chile-EE.UU. sobre minerales críticos es una señal positiva pero no ofrece protección legal garantizada.</p>
-    <div class="impl r">Este es el riesgo de mayor inmediatez. Es recomendable monitorear el informe con prioridad alta. Un escenario de aranceles al cobre cambiaría el escenario base de todo el análisis.</div>
-  </div>
-</div>
 
-<!-- SEC 5: SECTORES DE INVERSIÓN -->
-<div class="sec-hdr"><div class="sec-num">5</div><div class="sec-title">Sectores de Inversión: Desglose y Oportunidades</div><div class="sec-line"></div></div>
+  <div class="sec-hdr"><div class="sec-num">5</div><div class="sec-title">Pipeline de Inversión: Desglose Sectorial</div><div class="sec-line"></div></div>
 
-<div class="cgrid">
-  <div class="cw">
-    <div class="ct">Distribución del pipeline de inversión 2025–2034</div>
-    <div class="cs">Distribución sectorial · CBC Catastro 1T2026 · Total US$87.702bn · Período 2026–2030</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:center">
-      <div style="position:relative;height:240px"><canvas id="sectorChart"></canvas></div>
-      <div class="leg" style="flex-direction:column;gap:10px">
-        <span class="leg-i"><span class="dot" style="background:#216686;width:14px;height:14px"></span><strong>Minería (40.6%)</strong> — US$35,569M · 75 proyectos</span>
-        <span class="leg-i"><span class="dot" style="background:#4a90b8;width:14px;height:14px"></span><strong>Obras públicas (23.4%)</strong> — US$20,515M</span>
-        <span class="leg-i"><span class="dot" style="background:#1D7D54;width:14px;height:14px"></span><strong>Energía (20.1%)</strong> — US$17,663M · Solar, eólica, H₂</span>
-        <span class="leg-i"><span class="dot" style="background:#DC7528;width:14px;height:14px"></span><strong>Inmobiliario (7.3%)</strong> — US$6,386M</span>
-        <span class="leg-i"><span class="dot" style="background:#9b7ecb;width:14px;height:14px"></span><strong>Industrial (5.6%)</strong> — US$4,881M</span>
-        <span class="leg-i"><span class="dot" style="background:#CD4F4F;width:14px;height:14px"></span><strong>Tecnología (1.7%)</strong> — US$1,495M</span>
-        <span class="leg-i"><span class="dot" style="background:#b0aaaa;width:14px;height:14px"></span><strong>Puertos (1.4%)</strong> — US$1,193M</span>
+  <div class="cgrid">
+    <div class="cw">
+      <div class="ct">Distribución del pipeline 2026–2030</div>
+      <div class="cs">CBC Catastro 1T2026 · Total US$87,702M</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:center">
+        <div style="position:relative;height:240px"><canvas id="sectorChart"></canvas></div>
+        <div class="leg" style="flex-direction:column;gap:8px">
+          <span class="leg-i"><span class="dot" style="background:#216686;width:14px;height:14px"></span><strong>Minería (40.6%)</strong> — US$35,569M</span>
+          <span class="leg-i"><span class="dot" style="background:#4a90b8;width:14px;height:14px"></span><strong>Obras púb. (23.4%)</strong> — US$20,515M</span>
+          <span class="leg-i"><span class="dot" style="background:#1D7D54;width:14px;height:14px"></span><strong>Energía (20.1%)</strong> — US$17,663M</span>
+          <span class="leg-i"><span class="dot" style="background:#DC7528;width:14px;height:14px"></span><strong>Inmobiliario (7.3%)</strong> — US$6,386M</span>
+          <span class="leg-i"><span class="dot" style="background:#9b7ecb;width:14px;height:14px"></span><strong>Industrial (5.6%)</strong> — US$4,881M</span>
+          <span class="leg-i"><span class="dot" style="background:#CD4F4F;width:14px;height:14px"></span><strong>Tecnología (1.7%)</strong> — US$1,495M</span>
+          <span class="leg-i"><span class="dot" style="background:#b0aaaa;width:14px;height:14px"></span><strong>Puertos (1.4%)</strong> — US$1,193M</span>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="cw">
-    <div class="ct">Proyectos de hidrógeno verde anunciados</div>
-    <div class="cs">US$37bn+ en pipeline · Ministerio Energía Chile 2026</div>
-    <div style="position:relative;height:240px"><canvas id="h2Chart"></canvas></div>
-  </div>
-</div>
-
-<div class="grid">
-  <div class="card gr">
-    <div class="tag g">Energía renovable</div>
-    <h3>Energía: 20.1% del pipeline · US$17,663M en inversión 2026–2030 (CBC)</h3>
-    <p>Chile tiene la mayor irradiación solar del mundo en el Atacama y viento constante en la Patagonia. Al cierre de 2025, la generación solar y eólica alcanzó récords históricos. La capacidad instalada llegó a 37,798 MW en enero 2026 (69% renovable). El problema crítico: en 2025 se perdió ~20% de la energía solar/eólica por falta de capacidad de transmisión y almacenamiento. Esto crea una oportunidad directa para inversión en BESS (baterías) y líneas de transmisión. Chile proyecta superar 8,600 MW en almacenamiento para 2027.</p>
-    <div class="impl g">Los proyectos de energía renovable y almacenamiento son candidatos naturales a estructuras de project finance con participación de multilaterales (BID, CAF, IFC). Perfiles de largo plazo con flujos predecibles.</div>
-  </div>
-  <div class="card bl">
-    <div class="tag">Litio</div>
-    <h3>Litio: oportunidad real pero dentro de un marco legal restrictivo</h3>
-    <p>El litio sigue siendo mineral reservado al Estado en Chile (requiere enmienda constitucional que Kast no tiene mayoría para lograr). Los privados solo pueden entrar como socios estratégicos. Gibson Dunn advierte: "los inversores no deben confundir el tono más amigable con un cambio legal." Sin embargo, los PPP con SQM-Codelco en Salar de Atacama y la JV con Rio Tinto en Salar de Maricunga son vehículos reales de inversión en operación. El EIU señala que el gobierno respetará los acuerdos existentes del período Boric.</p>
-    <div class="impl o">Es recomendable entender la estructura legal de los vehículos antes de extender financiamiento a proyectos que asuman libre acceso privado al litio. Oportunidad real, pero acotada al modelo de PPP con el Estado.</div>
-  </div>
-  <div class="card bl">
-    <div class="tag">Infraestructura y PPP</div>
-    <h3>Kast expande las PPP a servicios sociales: hospitales, cárceles, vivienda</h3>
-    <p>Actualmente las PPP en Chile cubren solo infraestructura (rutas y aeropuertos). El gobierno Kast propone expandirlas a servicios sociales —hospitales, cárceles, vivienda subsidiada— abriendo un mercado nuevo de financiamiento estructurado. Energía representa 25% de toda la inversión planificada 2025–29. La construcción también acelera con la reforma de permisos ambientales (de 2 años a 6 meses).</p>
-    <div class="impl g">Las PPP de servicios sociales, si se aprueban, abrirán un mercado nuevo de financiamiento estructurado de largo plazo con respaldo estatal parcial.</div>
-  </div>
-</div>
-
-<!-- SEC 6: KAST Y REFORMAS -->
-<div class="sec-hdr"><div class="sec-num">6</div><div class="sec-title">Gobierno Kast: La Ventana de Inversión Más Amplia en 15 Años</div><div class="sec-line"></div></div>
-
-<div class="grid">
-  <div class="card bl">
-    <div class="tag">Kast</div>
-    <h3>El gobierno más pro-mercado desde la transición democrática</h3>
-    <p>José Antonio Kast asumió el 11 de marzo 2026 con la agenda más liberal desde 1990: reducir impuestos, desregular, acelerar permisos mineros, expandir PPPs y atraer IED. Su gabinete —dominado 70% por independientes tecnócratas— transmite pragmatismo sobre ideología. En su primera cadena nacional (15 abril 2026) presentó el omnibus bill como "proyecto estrella" de su administración, con ~40 iniciativas agrupadas en un único proyecto de ley. El EIU destaca su alta disposición a negociar con la oposición para no polarizar la agenda.</p>
-    <div class="impl g">El FDI proyectado salta de US$14.5bn (2025) a US$22.2bn (2026E) y US$30.7bn en 2030E. Existe una ventana de 2–3 años para posicionarse en los clientes que liderarán el próximo ciclo.</div>
-  </div>
-  <div class="card warn">
-    <div class="tag o">Gobernabilidad</div>
-    <h3>Congreso fragmentado: el PDG es el kingmaker hasta 2029</h3>
-    <p>Kast tiene mayoría slim en Diputados (gobierno+apoyos: 90/155) pero cae corto en el Senado (25/50, necesita 26). El populista PDG de Franco Parisi tiene 14 diputados y 1 senador —ambos decisivos. Ya extrajo concesiones (rebajas de IVA en medicamentos y pañales). Según Bloomberg (3 junio 2026), el omnibus bill enfrenta en el Senado cuestionamientos incluso de legisladores oficialistas sobre los beneficiarios de subsidios al empleo y la duración de las garantías tributarias. La Cámara aprobó el omnibus con cambios menores.</p>
-    <div class="impl o">Las reformas serán aprobadas pero probablemente diluidas. El impacto en PIB potencial llegará con retraso a 2027–2028. Es necesario tener escenarios con reformas parciales.</div>
-  </div>
-</div>
-
-<!-- TABLA DE REFORMAS CON ESTADO Y TIMELINE -->
-<div class="sec-hdr" style="margin-top:1.5rem"><div class="sec-title" style="font-size:1.1rem">Estado de las reformas de Kast: avance, timeline y relevancia para los actores financieros</div></div>
-
-<div class="timeline">
-  <div class="tl-row hdr">
-    <div class="tl-cell">Reforma</div>
-    <div class="tl-cell">Estado</div>
-    <div class="tl-cell">Timeline estimado de concreción</div>
-    <div class="tl-cell">Relevancia para los actores financieros</div>
-  </div>
-  <div class="tl-row">
-    <div class="tl-cell"><strong>Recorte 3% gasto ministerios</strong><span style="font-size:11px;color:#888">Hacienda · oficio firmado</span></div>
-    <div class="tl-cell"><span class="pill pl">Ejecutada</span><div class="prog-bar"><div class="prog-fill" style="width:100%;background:#1D7D54"></div></div></div>
-    <div class="tl-cell" style="color:var(--text)">Implementado en marzo 2026. US$1,400M concretados al 15 mayo (Salud, Educación, Vivienda). Meta total US$4,000M para cierre 2026. Sin precedente legislativo —fue decreto ejecutivo.</div>
-    <div class="tl-cell">Señal positiva de solvencia soberana. El déficit fiscal baja de 3.0% a 2.4% del PIB en 2026 según EIU junio.</div>
-  </div>
-  <div class="tl-row">
-    <div class="tl-cell"><strong>Permisos ambientales (SEIA)</strong><span style="font-size:11px;color:#888">2 años → 6 meses</span></div>
-    <div class="tl-cell"><span class="pill pl">Aprobada Cámara</span><div class="prog-bar"><div class="prog-fill" style="width:75%;background:#1D7D54"></div></div></div>
-    <div class="tl-cell" style="color:var(--text)">Aprobada en la Cámara el 20 mayo 2026. Pasa a Senado en junio. Basado en precedentes (reforma de permisos Piñera 2019 tardó ~4 meses en Senado), se estima promulgación en <strong>septiembre–octubre 2026</strong>.</div>
-    <div class="tl-cell">Acelera el timeline de proyectos mineros y renovables. Reduce tiempo al primer desembolso en project finance.</div>
-  </div>
-  <div class="tl-row">
-    <div class="tl-cell"><strong>Reducción impuesto corporativo</strong><span style="font-size:11px;color:#888">27% → 23% para 2029</span></div>
-    <div class="tl-cell"><span class="pill pm">En Senado</span><div class="prog-bar"><div class="prog-fill" style="width:55%;background:#DC7528"></div></div></div>
-    <div class="tl-cell" style="color:var(--text)">Aprobada en general por la Cámara en mayo 2026. En Senado enfrenta resistencia incluso de oficialistas (Bloomberg, jun 2026). Estimado de promulgación: <strong>3T2026</strong>. La reducción opera gradualmente: 26% en 2027, 24% en 2028, 23% en 2029. EIU señala riesgo de dilución en el Senado.</div>
-    <div class="tl-cell">Mejora rentabilidad corporativa. Puede aumentar demanda de crédito para reinversión. Impacto fiscal negativo compensado parcialmente por mayor actividad.</div>
-  </div>
-  <div class="tl-row">
-    <div class="tl-cell"><strong>Estabilidad tributaria 25 años</strong><span style="font-size:11px;color:#888">Proyectos +US$50M</span></div>
-    <div class="tl-cell"><span class="pill pm">En Senado</span><div class="prog-bar"><div class="prog-fill" style="width:55%;background:#DC7528"></div></div></div>
-    <div class="tl-cell" style="color:var(--text)">Parte del mismo omnibus bill. El Senado cuestiona la duración de 25 años (podría negociarse a 15–20 años). Estimado: <strong>3T2026</strong> con posible reducción de plazo como concesión al PDG.</div>
-    <div class="tl-cell">Clave para la bankabilidad de grandes proyectos. Reduce el riesgo regulatorio en estructuras de deuda a 10–15 años.</div>
-  </div>
-  <div class="tl-row">
-    <div class="tl-cell"><strong>Eliminación del 10% a ganancias bursátiles</strong><span style="font-size:11px;color:#888">Mercado de capitales</span></div>
-    <div class="tl-cell"><span class="pill pm">En Senado</span><div class="prog-bar"><div class="prog-fill" style="width:50%;background:#DC7528"></div></div></div>
-    <div class="tl-cell" style="color:var(--text)">Parte del omnibus bill. Menor resistencia política que la reforma corporativa. Estimado: <strong>3T2026</strong>. El IPSA ya en máximos históricos post-elección.</div>
-    <div class="tl-cell">Activa el mercado bursátil. Oportunidades en banca de inversión: colocaciones de deuda corporativa y emisión de project bonds.</div>
-  </div>
-  <div class="tl-row">
-    <div class="tl-cell"><strong>Formalización laboral (crédito 15%)</strong><span style="font-size:11px;color:#888">Incentivo contratación formal</span></div>
-    <div class="tl-cell"><span class="pill ph">Propuesta</span><div class="prog-bar"><div class="prog-fill" style="width:25%;background:#CD4F4F"></div></div></div>
-    <div class="tl-cell" style="color:var(--text)">Propuesta presentada como parte del omnibus bill. El PDG tiene reservas sobre los criterios de elegibilidad. Estimado conservador: <strong>4T2026 o 1T2027</strong>. El precedente de reformas laborales en Chile (Piñera 2021) sugiere ~6–8 meses de tramitación.</div>
-    <div class="tl-cell">Si avanza, amplía la base bancarizable con trabajadores formalizados con historial verificable.</div>
-  </div>
-  <div class="tl-row">
-    <div class="tl-cell"><strong>Expansión PPP a servicios sociales</strong><span style="font-size:11px;color:#888">Hospitales, cárceles, vivienda</span></div>
-    <div class="tl-cell"><span class="pill ph">Propuesta</span><div class="prog-bar"><div class="prog-fill" style="width:15%;background:#CD4F4F"></div></div></div>
-    <div class="tl-cell" style="color:var(--text)">Anunciada pero no ingresada formalmente al Congreso. Alta complejidad técnica y resistencia de izquierda ("privatización de servicios básicos"). Estimado realista: <strong>2027–2028</strong>. Basado en el precedente de la Ley de Concesiones (tardó 3 años en ampliarse).</div>
-    <div class="tl-cell">Abre un mercado nuevo de inversión privada en servicios sociales, actualmente reservado al Estado. Requiere paciencia estratégica.</div>
-  </div>
-</div>
-
-<!-- SEC 7: RIESGOS -->
-<div class="sec-hdr"><div class="sec-num">7</div><div class="sec-title">Riesgos: Mapa Actualizado al 17 de Junio 2026</div><div class="sec-line"></div></div>
-
-<div class="callout">
-  <h4>Actualización post-cierre IPoM: ceasefire EE.UU.–Irán anunciado el 19 de junio</h4>
-  <p>El IPoM de junio cerró estadísticamente el 10 de junio con petróleo en torno a US$90/barril y el conflicto activo. Tras ese cierre, el 19 de junio se anunció la firma de un acuerdo de paz entre EE.UU. e Irán. Los mercados reaccionaron positivamente: petróleo cayó por debajo de US$80/barril (-10% en dos días), bolsas subieron y el dólar se depreció globalmente. Para Chile, esto alivia la presión inflacionaria y abriría espacio para que el BCCh retome el ciclo de baja de tasas en 2T2027. El riesgo de escenario sigue siendo real: el BCCh advirtió que el conflicto se ha caracterizado por "constantes vaivenes" y el acuerdo deberá consolidarse.</p>
-</div>
-
-<table class="rtable">
-  <thead>
-    <tr><th style="width:25%">Riesgo</th><th style="width:12%">Prob.</th><th style="width:12%">Impacto</th><th>Descripción e implicancia para los actores financieros</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Aranceles EE.UU. al cobre refinado (informe fin de junio)</td><td><span class="pill pvh">Muy alta</span></td><td><span class="pill pvh">Sistémico</span></td><td>Si el cobre refinado queda incluido, afecta el tipo de cambio, los ingresos de Codelco, el déficit fiscal y toda la cadena exportadora. El acuerdo bilateral Chile–EE.UU. sobre minerales críticos ofrece señales positivas pero no garantía legal. Escenario más probable: exclusión con condiciones.</td></tr>
-    <tr><td>Guerra de Irán no se consolida (acuerdo del 19 jun frágil)</td><td><span class="pill pm">Media</span></td><td><span class="pill pvh">Muy alto</span></td><td><strong>Actualizado:</strong> Ceasefire anunciado el 19 de junio. Petróleo cayó a niveles por debajo de US$80/barril. Si el acuerdo se consolida, la inflación convergerá a 3% en 2T2027 y el BCCh podrá iniciar el ciclo de baja. Riesgo residual: el BCCh advirtió que el conflicto tuvo "constantes vaivenes". Una ruptura del acuerdo reactivaría presiones inflacionarias y retrasaría cortes de tasas.</td></tr>
-    <tr><td>Deuda pública supera umbral prudencial del 45% del PIB</td><td><span class="pill ph">Alta</span></td><td><span class="pill ph">Alto</span></td><td><strong>Riesgo nuevo (EIU jun'26):</strong> La trayectoria de deuda revisada sube a 44.7% en 2026, 45.2% en 2027 y 45.8% en 2028–2030, superando el umbral prudencial de las reglas fiscales chilenas. El gobierno solicitó US$6.2bn en financiamiento adicional al Congreso. Riesgo de presión sobre soberanos chilenos y encarecimiento del costo de financiamiento.</td></tr>
-    <tr><td>Reformas Kast bloqueadas o diluidas por el PDG</td><td><span class="pill ph">Alta</span></td><td><span class="pill ph">Alto</span></td><td>Las proyecciones de PIB de 2027–2028 asumen reformas aprobadas. Con reformas diluidas, el impacto sobre crecimiento potencial baja ~0.3–0.5pp anual. La estabilidad tributaria de 25 años podría acortarse a 15–20 años, reduciendo la bankabilidad de proyectos de largo plazo.</td></tr>
-    <tr><td>Protestas sociales por costo de vida (precedente 2019)</td><td><span class="pill ph">Alta</span></td><td><span class="pill ph">Alto</span></td><td>Patrón análogo a octubre 2019. La desescalada del conflicto iraní y la baja del petróleo alivian parcialmente la presión, pero el costo acumulado ya erosionó ingresos reales. Si las protestas se generalizan, golpean la confianza empresarial, el tipo de cambio y la agenda legislativa de reformas.</td></tr>
-    <tr><td>Inversión en minerales críticos frenada por retiro climático EE.UU.</td><td><span class="pill pvh">Muy alta</span></td><td><span class="pill ph">Alto</span></td><td>Si EE.UU. retira incentivos de transición energética, la demanda de litio se frena. El pipeline de inversión en litio es el más sensible a este riesgo. Afecta SQM, Codelco y el Joint Venture con Rio Tinto. La IA sostiene la demanda de cobre independientemente de esto.</td></tr>
-    <tr><td>Caída de precios del cobre por desaceleración china</td><td><span class="pill pm">Media</span></td><td><span class="pill pvh">Sistémico</span></td><td>China representa ~55% de la demanda global de cobre. Una desaceleración mayor de la prevista revertiría el rally del cobre y eliminaría el principal amortiguador fiscal de Chile. El escenario base del BCCh asume crecimiento de socios comerciales de 2.8% en 2026–2028.</td></tr>
-    <tr><td>Crimen organizado en zonas mineras del norte</td><td><span class="pill ph">Alta</span></td><td><span class="pill pm">Medio</span></td><td>El crimen transnacional en Antofagasta y Tarapacá puede retrasar obras y encarecer seguros de proyectos. El EIU identifica el robo de bienes transables (cobre, salmón, madera) como agenda prioritaria para Kast, con avances esperados pero sin solución estructural en el corto plazo.</td></tr>
-  </tbody>
-</table>
-
-<!-- SEC 8: SECTOR FINANCIERO -->
-<div class="sec-hdr"><div class="sec-num">8</div><div class="sec-title">Sector Financiero: Estructura, Tasas y Perspectivas</div><div class="sec-line"></div></div>
-
-<div class="kpi-row">
-  <div class="kpi g"><div class="kl">Total préstamos 2026E</div><div class="kv">$324bn</div><div class="ks">+8.8% vs 2025</div></div>
-  <div class="kpi"><div class="kl">Tasa activa 2026E</div><div class="kv">6.0%</div><div class="ks">Baja desde 6.4%</div></div>
-  <div class="kpi"><div class="kl">Tasa pasiva 2026E</div><div class="kv">4.0%</div><div class="ks">Baja desde 4.4%</div></div>
-  <div class="kpi o"><div class="kl">Spread bancario 2026E</div><div class="kv">2.0pp</div><div class="ks">Se comprime hacia 2030</div></div>
-  <div class="kpi"><div class="kl">Total préstamos 2030E</div><div class="kv">$416bn</div><div class="ks">+40% vs hoy</div></div>
-  <div class="kpi"><div class="kl">Open Finance (SFA)</div><div class="kv">Jul'27</div><div class="ks">Prorrogado 12 meses</div></div>
-</div>
-
-<div class="cgrid">
-  <div class="cw">
-    <div class="ct">Tasas de interés del sistema bancario</div>
-    <div class="cs">% promedio anual (2024–2030E) · BCCh / EIU</div>
-    <div class="leg">
-      <span class="leg-i"><span class="dot" style="background:#216686"></span>Tasa activa</span>
-      <span class="leg-i"><span class="dot" style="background:#1D7D54"></span>Tasa pasiva</span>
-      <span class="leg-i"><span class="dot" style="background:#CD4F4F"></span>Tasa política BCCh</span>
+    <div class="cw">
+      <div class="ct">Proyectos de hidrógeno verde anunciados</div>
+      <div class="cs">US$37bn+ en pipeline · Ministerio Energía Chile 2026</div>
+      <div style="position:relative;height:240px"><canvas id="h2Chart"></canvas></div>
     </div>
-    <div style="position:relative;height:210px"><canvas id="ratesChart"></canvas></div>
   </div>
-  <div class="cw">
-    <div class="ct">Desempleo y salarios reales</div>
-    <div class="cs">% (2023–2030E) · EIU — indicadores adelantados de calidad de cartera</div>
-    <div class="leg">
-      <span class="leg-i"><span class="dot" style="background:#CD4F4F"></span>Tasa desempleo</span>
-      <span class="leg-i"><span class="dot" style="background:#216686"></span>Salario real (eje der.)</span>
+
+  <div class="grid">
+    <div class="card gr">
+      <div class="tag g">Cobre</div>
+      <h3>Pipeline de US$104.5bn en minería de cobre (2025–2034)</h3>
+      <p>Cochilco identifica 13 proyectos en tramitación ambiental acelerada. La meta Kast: 6 millones de toneladas/año en 4–5 años. Freeport El Abra: expansión de US$7.5bn en proceso. La minería representa el 40.6% del pipeline total de inversión 2026–2030 (US$35,569M de un total de US$87,702M).</p>
+      <div class="impl g">La bankabilidad de estos proyectos los convierte en el destino más atractivo de financiamiento de largo plazo en la región.</div>
     </div>
-    <div style="position:relative;height:210px"><canvas id="employChart"></canvas></div>
+    <div class="card gr">
+      <div class="tag g">Energía renovable</div>
+      <h3>Energía: 20.1% del pipeline · US$17,663M en inversión 2026–2030</h3>
+      <p>Chile tiene la mayor irradiación solar del mundo en el Atacama y viento constante en Patagonia. En 2025 se perdió ~20% de la energía solar/eólica por falta de capacidad de transmisión y almacenamiento. Chile proyecta superar 8,600 MW en almacenamiento para 2027.</p>
+      <div class="impl g">Proyectos de energía renovable y BESS son candidatos naturales a project finance con multilaterales. Perfiles de largo plazo con flujos predecibles.</div>
+    </div>
+    <div class="card bl">
+      <div class="tag">Litio</div>
+      <h3>Litio: oportunidad real pero dentro de un marco legal restrictivo</h3>
+      <p>El litio sigue siendo mineral reservado al Estado (requiere enmienda constitucional que Kast no tiene mayoría para lograr). Gibson Dunn advierte: "los inversores no deben confundir el tono más amigable con un cambio legal." Los PPP con SQM-Codelco y la JV con Rio Tinto son los vehículos reales.</p>
+      <div class="impl o">Es recomendable entender la estructura legal antes de asumir libre acceso privado al litio. Oportunidad real, acotada al modelo PPP con el Estado.</div>
+    </div>
+    <div class="card bl">
+      <div class="tag">Infraestructura y PPP</div>
+      <h3>Kast expande las PPP a servicios sociales: hospitales, cárceles, vivienda</h3>
+      <p>Actualmente las PPP cubren solo infraestructura (rutas y aeropuertos). Kast propone expandirlas a servicios sociales, abriendo un mercado nuevo de financiamiento estructurado. La reforma de permisos ambientales (de 2 años a 6 meses) también acelera la construcción.</p>
+      <div class="impl g">Las PPP de servicios sociales, si se aprueban, abrirán un mercado nuevo de financiamiento estructurado con respaldo estatal parcial.</div>
+    </div>
   </div>
+
+</div>
 </div>
 
-<div class="grid">
-  <div class="card gr">
-    <div class="tag g">Project finance</div>
-    <h3>Pipeline de US$140bn+: la mayor oportunidad de fee income de la región</h3>
-    <p>El pipeline de cobre (US$104.5bn), litio (acuerdos SQM-Codelco-Rio Tinto) e hidrógeno verde (US$37bn anunciados) requiere estructuras sofisticadas de largo plazo. El IPoM de junio reporta que el Catastro CBC del 1T2026 elevó en 33% los montos de inversión para 2026–2029. Los contratos de estabilidad tributaria (pendientes de aprobación en Senado) mejoran la bankabilidad. La participación de multilaterales (BID, IFC, CAF) como first-loss habilita estructuras de financiamiento mixto muy atractivas.</p>
-    <div class="impl g">El pipeline de US$140bn+ en cobre, litio e hidrógeno verde requiere estructuras de financiamiento sofisticadas de largo plazo — la mayor oportunidad de inversión privada de la región en la próxima década.</div>
+<!-- ══════════════════════════════════════════════
+     SECCIÓN: SECTOR FINANCIERO
+══════════════════════════════════════════════ -->
+<div id="sec-financiero" class="section">
+<div class="container">
+
+  <div class="sec-hdr"><div class="sec-num">8</div><div class="sec-title">Sector Financiero: Tasas, Spreads y Perspectivas</div><div class="sec-line"></div></div>
+
+  <div class="kpi-row">
+    <div class="kpi g"><div class="kl">Total préstamos 2026E</div><div class="kv">$324bn</div><div class="ks">+8.8% vs 2025</div></div>
+    <div class="kpi"><div class="kl">Tasa activa 2026E</div><div class="kv">6.0%</div><div class="ks">Baja desde 6.4%</div></div>
+    <div class="kpi"><div class="kl">Tasa pasiva 2026E</div><div class="kv">4.0%</div><div class="ks">Baja desde 4.4%</div></div>
+    <div class="kpi o"><div class="kl">Spread bancario</div><div class="kv">2.0pp</div><div class="ks">Comprimiéndose</div></div>
+    <div class="kpi g"><div class="kl">Total préstamos 2030E</div><div class="kv">$416bn</div><div class="ks">+40% vs hoy</div></div>
+    <div class="kpi"><div class="kl">Open Finance (SFA)</div><div class="kv">Jul'27</div><div class="ks">Prorrogado 12 meses</div></div>
   </div>
-  <div class="card warn">
-    <div class="tag o">Márgenes</div>
-    <h3>Spread bancario se comprime: de 2.0pp en 2026 a ~1.4pp en 2030</h3>
-    <p>La tasa activa cae de 6.4% (2025) a 5.1% (2028) y la pasiva de 4.4% a 3.7%. La compresión de márgenes tiene dos motores: el ciclo de baja de tasas del BCCh (terminal 4.25% en 2027, con posible adelantamiento si el ceasefire iraní se consolida) y el aumento de competencia con fintechs bajo el Open Finance (SFA, julio 2027). El Open Finance permitirá que terceros accedan —con consentimiento del cliente— a datos bancarios, intensificando la competencia en crédito y depósitos.</p>
-    <div class="impl o">La presión sobre márgenes es el desafío estructural de toda la industria bancaria chilena. El Open Finance (SFA, julio 2027) intensificará la competencia pero también mejorará los modelos de scoring.</div>
+
+  <div class="cgrid">
+    <div class="cw">
+      <div class="ct">Tasas del sistema bancario</div>
+      <div class="cs">% promedio anual (2024–2030E) · BCCh / EIU</div>
+      <div class="leg">
+        <span class="leg-i"><span class="dot" style="background:#216686"></span>Tasa activa</span>
+        <span class="leg-i"><span class="dot" style="background:#1D7D54"></span>Tasa pasiva</span>
+        <span class="leg-i"><span class="dot" style="background:#CD4F4F"></span>BCCh</span>
+      </div>
+      <div style="position:relative;height:210px"><canvas id="ratesChart"></canvas></div>
+    </div>
+    <div class="cw">
+      <div class="ct">Sistema bancario: crédito total</div>
+      <div class="cs">US$ miles de millones (2024–2030E) · EIU / OCDE</div>
+      <div class="leg">
+        <span class="leg-i"><span class="dot" style="background:#216686"></span>Préstamos LP</span>
+        <span class="leg-i"><span class="dot" style="background:#DC7528"></span>Préstamos CP</span>
+      </div>
+      <div style="position:relative;height:210px"><canvas id="creditChart"></canvas></div>
+    </div>
   </div>
-</div>
 
-<!-- SEC 9: CONCLUSIONES -->
-<div class="sec-hdr"><div class="sec-num">9</div><div class="sec-title">Síntesis: Las 8 Claves del Escenario Chile 2026–2027</div><div class="sec-line"></div></div>
-
-<div class="dark-box">
-  <p class="ey">Síntesis ejecutiva · Junio 2026 · Actualizada con IPoM junio y EIU junio</p>
-  <p class="lead">Chile es la economía más sólida de América Latina en términos institucionales y financieros, con el gobierno más pro-mercado en 35 años. Sin embargo, 2026 es un año de ajuste más profundo de lo anticipado: el rango de crecimiento bajó a 1.0–1.75%.</p>
-  <p class="body">El escenario exige distinguir entre los factores de corto plazo —Q1 débil por recursos naturales, inflación por petróleo, deuda en alza— y las tendencias estructurales de mediano plazo que posicionan a Chile como el destino de inversión más atractivo de América Latina. El ceasefire iraní del 19 de junio cambia el escenario de riesgos de manera significativa si se consolida.</p>
-</div>
-
-<div class="grid">
-  <div class="card succ"><div class="tag g">Macro · Fortaleza</div><h3>Sistema institucional: el mejor de la región</h3><p>BCCh independiente, CMF activa, banca rentable y capitalizada. Chile ocupa el puesto nº2 global en política hacia la inversión extranjera. El déficit fiscal se reduce a 2.4% del PIB en 2026. Las expectativas de inflación a 2 años siguen ancladas en 3%.</p><div class="impl g">Entorno de bajo riesgo sistémico. Chile tiene el perfil de riesgo país más sólido de América Latina para inversión e intercambio financiero.</div></div>
-  <div class="card risk"><div class="tag r">Macro · Riesgo</div><h3>2026 es el año más difícil: rango IPoM de 1.0–1.75%</h3><p>Triple presión: shock de oferta en recursos naturales (Q1 contrajo -0.5% anual), shock petrolero (inflación al techo) y consolidación fiscal. La deuda pública se proyecta en 45.2% del PIB en 2027, superando el umbral prudencial. La recuperación a 3.2% en 2027 depende del ceasefire iraní y la inversión privada.</p><div class="impl r">El consumo privado y los sectores ligados al ciclo doméstico son los más vulnerables al shock de 2026. La cautela es la postura adecuada para exposiciones de corto plazo.</div></div>
-  <div class="card succ"><div class="tag g">Familias · Fortaleza</div><h3>Clase media robusta; gasto en salud y educación estructuralmente al alza</h3><p>3er ingreso per cápita de LATAM en PPP. El gasto en salud sube de US$16.8bn a US$19.4bn; educación de US$18.2bn a US$20.8bn. Estas categorías son poco sensibles al ciclo de corto plazo. El ceasefire iraní podría aliviar la presión inflacionaria en 2H2026.</p><div class="impl g">El gasto en salud, educación y vivienda es poco sensible al ciclo. Son las categorías de mayor resiliencia en el escenario 2026.</div></div>
-  <div class="card risk"><div class="tag r">Familias · Riesgo</div><h3>Combustibles e inflación erosionan el ingreso real; riesgo de conflicto social</h3><p>Salario real crece solo 1.2% frente a inflación 3.6%. El desempleo llegó a 9.1% en abril con recomposición desde empleo formal hacia informal. Precedente 2019: Chile tiene capacidad histórica de escalar el malestar social. La baja del petróleo post-ceasefire es un alivio parcial.</p><div class="impl r">La presión sobre el ingreso real de los hogares es el principal riesgo de corto plazo para el consumo doméstico y la estabilidad social.</div></div>
-  <div class="card warn"><div class="tag o">Empleo · Tensión</div><h3>Desempleo en 9.1% (máximo del ciclo), recomposición hacia informalidad</h3><p>La reforma de formalización laboral es el mayor activo de mediano plazo. El IPoM de junio identifica una preocupante recomposición desde empleo formal hacia informal. El costo laboral en dólares sube gradualmente, manteniendo competitividad exportadora.</p><div class="impl o">El desempleo regional —especialmente en el norte minero y la zona metropolitana— es el indicador adelantado más relevante para el consumo y el crédito al consumo.</div></div>
-  <div class="card succ"><div class="tag g">Política · Ventana</div><h3>Kast abre la ventana de inversión más amplia en 15 años</h3><p>FDI salta de US$14.5bn (2025) a US$22.2bn (2026E) y US$30.7bn en 2030E. El EIU destaca la alta gobernabilidad demostrada por Kast en sus primeros meses. Los permisos ambientales ya aprobados en Cámara. El omnibus bill en fase final de negociación en Senado.</p><div class="impl g">Chile tiene una ventana histórica de inversión. Los próximos 12–18 meses son clave para que las reformas se concreten y el FDI se materialice.</div></div>
-  <div class="card risk"><div class="tag r">Política · Riesgo fiscal</div><h3>Deuda en 45.2% del PIB en 2027: al límite de la regla fiscal</h3><p>El EIU revisó la trayectoria de deuda de forma sustancial: de 40.6% del PIB en 2030 (mayo'26) a 45.8% del PIB en 2030 (jun'26). Supera el umbral prudencial del 45% establecido en las reglas fiscales chilenas. El gobierno solicitó US$6.2bn adicionales en deuda al Congreso.</p><div class="impl r">Monitorear la sostenibilidad fiscal. El Consejo Fiscal Autónomo ya señalizó preocupación. Esta es la revisión más significativa del reporte EIU de junio.</div></div>
-  <div class="card succ"><div class="tag g">Sector financiero · La gran apuesta</div><h3>Project finance y sindicaciones: el mayor espacio de valor en Chile</h3><p>Pipeline US$140bn+ en cobre, litio e hidrógeno verde. El CBC elevó +33% los montos de inversión esperados para 2026–2029 (IPoM jun'26). Contratos de estabilidad tributaria mejoran bankabilidad. Multilaterales como de-riskers. Open Finance como oportunidad de scoring mejorado.</p><div class="impl g">El pipeline de inversión en cobre, litio e hidrógeno verde es la mayor oportunidad de financiamiento privado de la región. La ventana para posicionarse es los próximos 2–3 años.</div></div>
-</div>
-
-<!-- FUENTES -->
-<div class="src">
-  <h4>Fuentes consultadas</h4>
-  <ul>
-    <li>EIU One-click Report: Chile (junio 2026 · actualización)</li>
-    <li>BCCh — IPoM junio 2026 (cierre estadístico: 10 junio 2026)</li>
-    <li>BCCh — IPoM marzo 2026</li>
-    <li>BCCh — Informe de Estabilidad Financiera 1S2026</li>
-    <li>BCCh — Catastro CBC 1T2026 (inversión grandes proyectos)</li>
-    <li>Hacienda Chile — Oficio ajuste fiscal 3% (marzo 2026)</li>
-    <li>Gibson Dunn — Chile's Lithium Regime under President Kast (marzo 2026)</li>
-    <li>Bloomberg — Senado chileno debate megarreforma Kast (junio 2026)</li>
-    <li>Infobae — Kast anuncia megareforma (abril 2026)</li>
-    <li>BioBioChile — Recortes ministeriales y ajuste fiscal (marzo–mayo 2026)</li>
-    <li>The Clinic — Recorte fiscal US$1,400M concretado (mayo 2026)</li>
-    <li>Emol — PIB Chile y proyecciones 2026 (marzo–junio 2026)</li>
-    <li>Banco Mundial — Panorama económico LATAM (abril 2026)</li>
-    <li>CBC — Catastro de Inversión 1T2026, pipeline 2026–2030, US$87,702M total (publicado mayo 2026)</li>
-    <li>Cochilco — Catastro de proyectos mineros 2026</li>
-    <li>AmericaEconómica — Fusión de ministerios Chile (junio 2026)</li>
-  </ul>
-</div>
+  <div class="grid">
+    <div class="card succ">
+      <div class="tag g">Solidez</div>
+      <h3>Banca chilena: rentabilidad en máximos históricos</h3>
+      <p>El IEF del BCCh (1S2026) confirma rentabilidad por encima de los promedios históricos, fuentes de financiamiento estables y colchones de capital suficientes. El crédito total pasa de US$298bn (2025) a US$416bn (2030E). Es el sistema más profundo y sofisticado de América Latina.</p>
+      <div class="impl g">El sistema bancario chileno es robusto y bien capitalizado — el más desarrollado de la región en términos relativos. Bajo riesgo sistémico.</div>
+    </div>
+    <div class="card warn">
+      <div class="tag o">Spreads</div>
+      <h3>Spread bancario se comprime: de 2.0pp en 2026 a ~1.4pp en 2030</h3>
+      <p>Tasa activa cae de 6.4% (2025) a 5.1% (2028) y la pasiva de 4.4% a 3.7%. La compresión tiene dos motores: el ciclo de baja de tasas del BCCh (terminal 4.25% en 2027) y el aumento de competencia con fintechs bajo el Open Finance (SFA, julio 2027).</p>
+      <div class="impl o">La presión sobre márgenes es el desafío estructural de toda la industria bancaria chilena. El Open Finance intensificará la competencia pero también mejorará los modelos de scoring.</div>
+    </div>
+    <div class="card gr">
+      <div class="tag g">Project finance</div>
+      <h3>Pipeline de US$140bn+: la mayor oportunidad de la región</h3>
+      <p>El pipeline de cobre, litio e hidrógeno verde requiere estructuras sofisticadas de largo plazo. Los contratos de estabilidad tributaria de 25 años (pendientes en Senado) mejoran la bankabilidad. Los multilaterales (BID, IFC, CAF) como first-loss habilitan estructuras de financiamiento mixto.</p>
+      <div class="impl g">El pipeline de US$140bn+ en cobre, litio e hidrógeno verde es la mayor oportunidad de inversión privada de la región en la próxima década.</div>
+    </div>
+    <div class="card succ">
+      <div class="tag g">Open Finance</div>
+      <h3>Ley Fintech vigente · Open Finance (SFA) entra en operación en julio 2027</h3>
+      <p>La CMF aprobó prórroga de 12 meses (julio 2027) para el SFA, atendiendo solicitudes de bancos privados. Cuando opere, permitirá que terceros accedan —con consentimiento del cliente— a datos bancarios. Chile replica el modelo europeo PSD2.</p>
+      <div class="impl">El acceso a más datos mejora los modelos de scoring y permite personalización de productos a escala. Es una oportunidad, no solo una amenaza regulatoria.</div>
+    </div>
+  </div>
 
 </div>
+</div>
 
-<div class="footer">Análisis actualizado junio 2026 · Fuentes: EIU jun'26, BCCh IPoM jun'26, CMF, Hacienda, Bloomberg, Cochilco, CBC · <strong>Última revisión: ceasefire EE.UU.–Irán anunciado 19 jun'26</strong></div>
+<!-- ══════════════════════════════════════════════
+     SECCIÓN: RIESGOS
+══════════════════════════════════════════════ -->
+<div id="sec-riesgos" class="section">
+<div class="container">
+
+  <div class="sec-hdr"><div class="sec-num">7</div><div class="sec-title">Riesgos Urgentes: Lo Que Puede Cambiar el Escenario</div><div class="sec-line"></div></div>
+
+  <div class="callout">
+    <h4>Dos riesgos de materialización inmediata: aranceles al cobre y duración de la guerra de Irán</h4>
+    <p>El informe del Departamento de Comercio de EE.UU. sobre aranceles al cobre refinado se publica a fin de junio 2026. Si incluye al cobre, el impacto es sistémico para Chile. Simultáneamente, la trayectoria de la guerra de Irán es el determinante externo más importante: el BCCh basa su escenario en una desescalada gradual en 2S2026.</p>
+  </div>
+
+  <table class="rtable">
+    <thead>
+      <tr><th style="width:25%">Riesgo</th><th style="width:12%">Prob.</th><th style="width:12%">Impacto</th><th>Descripción e implicancia</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Aranceles EE.UU. al cobre refinado (informe fin de junio)</td><td><span class="pill pvh">Muy alta</span></td><td><span class="pill pvh">Sistémico</span></td><td>Si el cobre refinado queda incluido, afecta el tipo de cambio, los ingresos de Codelco, el déficit fiscal y toda la cadena exportadora. Es el riesgo de mayor inmediatez esta semana.</td></tr>
+      <tr><td>Guerra de Irán se prolonga (petróleo >US$95 todo 2026)</td><td><span class="pill pvh">Muy alta</span></td><td><span class="pill pvh">Muy alto</span></td><td>Mantiene presión inflacionaria, posterga el corte de tasas del BCCh y debilita el consumo. El BCCh ya redujo su rango de crecimiento 2026 a 1.5–2.5% por este factor.</td></tr>
+      <tr><td>Inversión en minerales críticos frenada por EE.UU.</td><td><span class="pill pvh">Muy alta</span></td><td><span class="pill ph">Alto</span></td><td>Si EE.UU. retira incentivos de transición energética, la demanda de litio se frena. Afecta directamente a SQM, Codelco y la JV con Rio Tinto.</td></tr>
+      <tr><td>Protestas sociales por costo de vida (precedente 2019)</td><td><span class="pill ph">Alta</span></td><td><span class="pill ph">Alto</span></td><td>Patrón análogo a octubre 2019. Si se generalizan, afectarían la confianza empresarial, el tipo de cambio y la agenda legislativa. Es el riesgo de cola más importante para el escenario 2027.</td></tr>
+      <tr><td>Reformas Kast bloqueadas o diluidas por el PDG</td><td><span class="pill ph">Alta</span></td><td><span class="pill ph">Alto</span></td><td>Las proyecciones de PIB 2027–2028 asumen reformas aprobadas. Con reformas diluidas, el impacto en PIB potencial baja ~0.3–0.5pp anual.</td></tr>
+      <tr><td>Caída del precio del cobre por desaceleración china</td><td><span class="pill pm">Media</span></td><td><span class="pill pvh">Sistémico</span></td><td>China representa ~55% de la demanda global de cobre. Una desaceleración mayor de la prevista revertiría el rally del cobre y eliminaría el principal amortiguador fiscal de Chile.</td></tr>
+      <tr><td>Crimen organizado en zonas mineras del norte</td><td><span class="pill ph">Alta</span></td><td><span class="pill pm">Medio</span></td><td>El crimen transnacional en Antofagasta y Tarapacá puede retrasar obras y encarecer seguros de proyectos. Debe incorporarse en el análisis de riesgo operacional de proyectos en esas regiones.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Síntesis de conclusiones -->
+  <div class="sec-hdr"><div class="sec-title" style="font-size:1.1rem">Síntesis: Las 8 Claves del Escenario Chile 2026–2027</div></div>
+
+  <div class="grid">
+    <div class="card succ"><div class="tag g">Macro · Fortaleza</div><h3>Sistema institucional: el mejor de la región</h3><p>BCCh independiente, CMF activa, banca rentable, deuda pública en trayectoria descendente (42.2% → 40.6% del PIB en 2030). Puesto nº2 global en política hacia la IED.</p><div class="impl g">Chile tiene el perfil de riesgo país más sólido de América Latina para inversión e intercambio financiero.</div></div>
+    <div class="card risk"><div class="tag r">Macro · Riesgo</div><h3>2026 es el año más difícil: 1.4% de crecimiento</h3><p>Doble presión del shock petrolero y consolidación fiscal. La recuperación a 2.9% en 2027 depende de la desescalada del conflicto iraní.</p><div class="impl r">El consumo privado y los sectores ligados al ciclo doméstico son los más vulnerables al shock de 2026.</div></div>
+    <div class="card succ"><div class="tag g">Familias · Fortaleza</div><h3>Clase media robusta; gasto en salud y educación al alza</h3><p>3er ingreso per cápita de LATAM en PPP. Gasto en salud sube de US$16.8bn a US$19.4bn; educación de US$18.2bn a US$20.8bn.</p><div class="impl g">El gasto en salud, educación y vivienda es poco sensible al ciclo. Son las categorías de mayor resiliencia en 2026.</div></div>
+    <div class="card risk"><div class="tag r">Familias · Riesgo</div><h3>Combustibles e inflación erosionan el ingreso real</h3><p>Salario real crece solo 1.2% frente a inflación 3.7%. Precedente 2019: Chile tiene capacidad histórica de escalar el malestar social.</p><div class="impl r">La presión sobre el ingreso real de los hogares es el principal riesgo de corto plazo para el consumo doméstico.</div></div>
+    <div class="card warn"><div class="tag o">Empleo · Tensión</div><h3>Desempleo en 8.7%, trayectoria a 7.7% para 2029</h3><p>La reforma de formalización laboral ampliaría la base de trabajadores con contratos formales e historial verificable.</p><div class="impl o">El desempleo regional es el indicador adelantado más relevante para el consumo y la calidad de cartera.</div></div>
+    <div class="card succ"><div class="tag g">Política · Ventana</div><h3>Kast abre la ventana de inversión más amplia en 15 años</h3><p>FDI salta de US$14.5bn (2025) a US$22.2bn (2026E) y US$30.7bn en 2030E. Omnibus bill en Senado con reformas clave.</p><div class="impl g">Los próximos 12–18 meses son clave para posicionarse en el próximo ciclo inversor.</div></div>
+    <div class="card risk"><div class="tag r">Política · Riesgo</div><h3>El PDG puede diluir reformas; elecciones 2029 en el horizonte</h3><p>Con reformas diluidas, el PIB potencial baja ~0.3–0.5pp anual. El PDG tiene incentivos para diferenciarse de Kast antes de 2029.</p><div class="impl o">Escenarios con reformas parciales deben estar en cualquier análisis de mediano plazo sobre Chile.</div></div>
+    <div class="card succ"><div class="tag g">Sector financiero · Oportunidad</div><h3>Project finance: el mayor espacio de valor en Chile</h3><p>Pipeline US$140bn+ en cobre, litio e hidrógeno verde. Contratos de estabilidad tributaria mejoran bankabilidad. Multilaterales como de-riskers.</p><div class="impl g">La mayor oportunidad de financiamiento privado de la región. La ventana es los próximos 2–3 años.</div></div>
+  </div>
+
+  <!-- Fuentes -->
+  <div class="src">
+    <h4>Fuentes consultadas</h4>
+    <ul>
+      <li>EIU One-click Report: Chile (mayo–junio 2026)</li>
+      <li>BCCh — IPoM marzo y junio 2026</li>
+      <li>BCCh — Informe de Estabilidad Financiera 1S2026</li>
+      <li>Hacienda Chile — Oficio ajuste fiscal 3% (marzo 2026)</li>
+      <li>Gibson Dunn — Chile's Lithium Regime under President Kast (marzo 2026)</li>
+      <li>Bloomberg — Senado chileno debate megarreforma Kast (junio 2026)</li>
+      <li>CBC — Catastro de Inversión 1T2026, pipeline 2026–2030 (mayo 2026)</li>
+      <li>Cochilco — Cartera de Proyectos Mineros 2025–2034</li>
+      <li>Ministerio Energía Chile — Reporte proyectos en construcción (enero 2026)</li>
+    </ul>
+  </div>
+
+</div>
+</div>
+
+<div class="footer">Análisis elaborado en junio 2026 · Fuentes: EIU, BCCh, CMF, Hacienda, Bloomberg, Emol, Cochilco, CBC</div>
 
 <script>
 const B='#216686',R='#CD4F4F',G='#A6A6A6',O='#DC7528',GR='#1D7D54';
@@ -567,11 +682,22 @@ const L5=['2023','2024','2025','2026E','2027E'];
 const D={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false}},scales:{x:{grid:{display:false},ticks:{font:{size:11},color:'#888'}},y:{grid:{color:'#f0eeea'},ticks:{font:{size:11},color:'#888'}}}};
 function pct(v){return v+'%'} function usd(v){return '$'+v+'bn'}
 
-// PIB: Chile 2027E actualizado a 3.2% (EIU jun'26), 2028E 2.6%, 2029E 2.7%, 2030E 2.6%
+// Navigation
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  if(btn) btn.classList.add('active');
+  window.scrollTo({top: document.querySelector('.nav-bar').offsetTop - 10, behavior: 'smooth'});
+  // Re-render charts in newly visible section
+  setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+}
+
+// Charts
 new Chart(document.getElementById('gdpChart'),{type:'line',data:{labels:L7,datasets:[
-  {label:'Chile',data:[2.8,2.5,1.4,3.2,2.6,2.7,2.6],borderColor:B,backgroundColor:'rgba(33,102,134,0.06)',fill:true,tension:.4,borderWidth:2,pointRadius:4,pointBackgroundColor:B},
-  {label:'Mundo',data:[2.7,2.8,2.4,2.7,2.8,2.8,2.8],borderColor:G,borderDash:[5,3],backgroundColor:'transparent',tension:.4,borderWidth:1.5,pointRadius:3,pointBackgroundColor:G},
-  {label:'Emergentes',data:[4.2,4.0,3.4,4.2,4.0,3.9,3.8],borderColor:O,borderDash:[2,2],backgroundColor:'transparent',tension:.4,borderWidth:1.5,pointRadius:3,pointBackgroundColor:O}
+  {label:'Chile',data:[2.8,2.5,1.4,2.9,2.6,2.5,2.4],borderColor:B,backgroundColor:'rgba(33,102,134,0.06)',fill:true,tension:.4,borderWidth:2,pointRadius:4,pointBackgroundColor:B},
+  {label:'Mundo',data:[2.7,2.8,2.4,2.7,2.8,2.8,2.8],borderColor:G,borderDash:[5,3],backgroundColor:'transparent',tension:.4,borderWidth:1.5,pointRadius:3},
+  {label:'Emergentes',data:[4.2,4.0,3.4,4.2,4.0,3.9,3.8],borderColor:O,borderDash:[2,2],backgroundColor:'transparent',tension:.4,borderWidth:1.5,pointRadius:3}
 ]},options:{...D,scales:{...D.scales,y:{...D.scales.y,min:0,max:5,ticks:{...D.scales.y.ticks,callback:pct}}}}});
 
 new Chart(document.getElementById('creditChart'),{type:'bar',data:{labels:L7,datasets:[
@@ -579,38 +705,34 @@ new Chart(document.getElementById('creditChart'),{type:'bar',data:{labels:L7,dat
   {label:'CP',data:[32.8,37.0,40.2,44.1,46.2,48.9,51.6],backgroundColor:'rgba(220,117,40,0.65)',borderRadius:3,stack:'a'}
 ]},options:{...D,scales:{...D.scales,x:{...D.scales.x,stacked:true},y:{...D.scales.y,stacked:true,ticks:{...D.scales.y.ticks,callback:usd}}}}});
 
-// GDP composition: ajuste IPoM jun'26 (FBCF 2026: 2.2%, consumo privado 1.8%, gob mayor)
 new Chart(document.getElementById('gdpCompChart'),{type:'bar',data:{labels:['2025','2026E','2027E'],datasets:[
-  {label:'Consumo privado',data:[1.7,0.8,1.4],backgroundColor:'rgba(33,102,134,0.75)',borderRadius:3,stack:'a'},
-  {label:'Inversión fija',data:[1.6,0.5,1.8],backgroundColor:'rgba(29,125,84,0.75)',borderRadius:3,stack:'a'},
-  {label:'Gob+exist.',data:[0.5,0.3,0.0],backgroundColor:'rgba(166,166,166,0.75)',borderRadius:3,stack:'a'},
-  {label:'Bal. externa',data:[-1.7,-0.4,0.0],backgroundColor:'rgba(220,117,40,0.6)',borderRadius:3,stack:'a'}
+  {label:'Consumo privado',data:[1.7,0.9,1.6],backgroundColor:'rgba(33,102,134,0.75)',borderRadius:3,stack:'a'},
+  {label:'Inversión fija',data:[1.6,1.5,1.2],backgroundColor:'rgba(29,125,84,0.75)',borderRadius:3,stack:'a'},
+  {label:'Gob+exist.',data:[0.5,-0.4,0.0],backgroundColor:'rgba(166,166,166,0.75)',borderRadius:3,stack:'a'},
+  {label:'Bal. externa',data:[-1.7,0.2,0.0],backgroundColor:'rgba(220,117,40,0.6)',borderRadius:3,stack:'a'}
 ]},options:{...D,scales:{...D.scales,x:{...D.scales.x,stacked:true},y:{...D.scales.y,stacked:true,ticks:{...D.scales.y.ticks,callback:(v)=>v+'pp'}}}}});
 
 new Chart(document.getElementById('driversChart'),{type:'bar',data:{labels:['2026E — por sector'],datasets:[
-  {label:'Minería',data:[-0.2],backgroundColor:'rgba(33,102,134,0.75)',borderRadius:3},
+  {label:'Minería',data:[0.2],backgroundColor:'rgba(33,102,134,0.75)',borderRadius:3},
   {label:'Inversión privada',data:[0.5],backgroundColor:'rgba(29,125,84,0.75)',borderRadius:3},
   {label:'Servicios/comercio',data:[0.9],backgroundColor:'rgba(220,117,40,0.65)',borderRadius:3},
-  {label:'Gasto público',data:[0.2],backgroundColor:'rgba(205,79,79,0.65)',borderRadius:3},
-  {label:'Exp. netas',data:[-0.2],backgroundColor:'rgba(166,166,166,0.7)',borderRadius:3}
+  {label:'Gasto público',data:[-0.4],backgroundColor:'rgba(205,79,79,0.65)',borderRadius:3},
+  {label:'Exp. netas',data:[0.2],backgroundColor:'rgba(166,166,166,0.7)',borderRadius:3}
 ]},options:{...D,indexAxis:'y',scales:{x:{...D.scales.x,ticks:{...D.scales.x.ticks,callback:(v)=>v+'pp'}},y:{...D.scales.y,grid:{display:false}}}}});
 
-// FISCAL: deuda revisada FUERTEMENTE al alza (EIU jun'26): 42.8→44.7→45.2→45.8→45.8→45.8
-// Balance: -2.4% en 2026 (revisado desde -2.5%)
 new Chart(document.getElementById('fiscalChart'),{type:'bar',data:{labels:L8,datasets:[
-  {label:'Balance fiscal',data:[-1.3,-1.6,-3.0,-2.4,-1.9,-1.6,-1.5,-1.3],backgroundColor:'rgba(205,79,79,0.65)',borderRadius:3,yAxisID:'y'},
-  {label:'Deuda pública',data:[39.4,41.8,42.8,44.7,45.2,45.8,45.8,45.8],type:'line',borderColor:B,backgroundColor:'transparent',tension:.4,borderWidth:2,pointRadius:3,pointBackgroundColor:B,yAxisID:'y2'}
-]},options:{...D,scales:{x:{...D.scales.x},y:{...D.scales.y,min:-4,max:0,ticks:{...D.scales.y.ticks,callback:pct},title:{display:true,text:'Balance (%)',font:{size:10},color:'#888'}},y2:{position:'right',grid:{display:false},min:35,max:50,ticks:{font:{size:10},color:'#888',callback:pct},title:{display:true,text:'Deuda (%)',font:{size:10},color:'#888'}}}}});
+  {label:'Balance fiscal',data:[-2.4,-2.9,-3.0,-2.5,-1.7,-1.3,-1.2,-0.9],backgroundColor:'rgba(205,79,79,0.65)',borderRadius:3,yAxisID:'y'},
+  {label:'Deuda pública',data:[39.4,41.8,41.8,42.2,42.4,41.9,41.5,40.6],type:'line',borderColor:B,backgroundColor:'transparent',tension:.4,borderWidth:2,pointRadius:3,pointBackgroundColor:B,yAxisID:'y2'}
+]},options:{...D,scales:{x:{...D.scales.x},y:{...D.scales.y,min:-4,max:0,ticks:{...D.scales.y.ticks,callback:pct}},y2:{position:'right',grid:{display:false},min:35,max:48,ticks:{font:{size:10},color:'#888',callback:pct}}}}});
 
-// INFLACIÓN: 2026 baja a 3.6% (EIU jun'26 revisó desde 3.7%), 2027: 3.3%, 2028-2030: 3.0/3.0/2.9
 new Chart(document.getElementById('inflationChart'),{type:'bar',data:{labels:L7,datasets:[
-  {label:'CPI',data:[3.9,4.2,3.6,3.3,3.0,3.0,2.9],backgroundColor:'rgba(205,79,79,0.7)',borderRadius:3},
-  {label:'Tasa BCCh',data:[6.2,4.9,4.5,4.3,4.3,4.0,4.0],type:'line',borderColor:B,backgroundColor:'transparent',tension:.4,borderWidth:2,pointRadius:4,pointBackgroundColor:B}
+  {label:'CPI',data:[3.9,4.2,3.7,3.3,3.0,3.0,2.9],backgroundColor:'rgba(205,79,79,0.7)',borderRadius:3},
+  {label:'Tasa BCCh',data:[6.2,4.9,4.5,4.3,4.3,4.3,4.3],type:'line',borderColor:B,backgroundColor:'transparent',tension:.4,borderWidth:2,pointRadius:4,pointBackgroundColor:B}
 ]},options:{...D,scales:{...D.scales,y:{...D.scales.y,min:0,max:8,ticks:{...D.scales.y.ticks,callback:pct}}}}});
 
 new Chart(document.getElementById('wagesChart'),{type:'line',data:{labels:L5,datasets:[
   {label:'Salario real',data:[1.6,3.4,2.8,1.2,2.0],borderColor:B,backgroundColor:'rgba(33,102,134,0.06)',fill:true,tension:.4,borderWidth:2,pointRadius:4,pointBackgroundColor:B},
-  {label:'Consumo privado',data:[-4.7,1.1,2.7,1.8,2.0],borderColor:O,borderDash:[4,3],backgroundColor:'transparent',tension:.4,borderWidth:1.5,pointRadius:3,pointBackgroundColor:O}
+  {label:'Consumo privado',data:[-4.7,1.1,2.7,1.5,2.6],borderColor:O,borderDash:[4,3],backgroundColor:'transparent',tension:.4,borderWidth:1.5,pointRadius:3}
 ]},options:{...D,scales:{...D.scales,y:{...D.scales.y,ticks:{...D.scales.y.ticks,callback:pct}}}}});
 
 new Chart(document.getElementById('houseChart'),{type:'bar',data:{labels:['2025','2026E','2027E'],datasets:[
@@ -620,25 +742,24 @@ new Chart(document.getElementById('houseChart'),{type:'bar',data:{labels:['2025'
   {label:'Salud',data:[16.8,19.4,20.5],backgroundColor:'rgba(220,117,40,0.7)',borderRadius:3,stack:'a'}
 ]},options:{...D,scales:{...D.scales,x:{...D.scales.x,stacked:true},y:{...D.scales.y,stacked:true,ticks:{...D.scales.y.ticks,callback:usd}}}}});
 
-new Chart(document.getElementById('fxChart'),{type:'line',data:{labels:L7,datasets:[{label:'CLP/USD',data:[943.74,951.25,871.53,867.33,867.00,855.40,854.00],borderColor:B,backgroundColor:'rgba(33,102,134,0.07)',fill:true,tension:.4,borderWidth:2,pointRadius:4,pointBackgroundColor:B}]},options:{...D,scales:{...D.scales,y:{...D.scales.y,min:840,max:980}}}});
+new Chart(document.getElementById('employChart'),{type:'line',data:{labels:L8,datasets:[
+  {label:'Desempleo',data:[8.5,8.1,8.1,8.7,8.5,8.0,7.7,7.5],borderColor:R,backgroundColor:'rgba(205,79,79,0.06)',fill:true,tension:.4,borderWidth:2,pointRadius:4,pointBackgroundColor:R,yAxisID:'y'},
+  {label:'Salario real',data:[1.6,3.4,2.8,1.2,2.0,2.0,2.0,2.0],borderColor:B,borderDash:[4,3],backgroundColor:'transparent',tension:.4,borderWidth:1.5,pointRadius:3,pointBackgroundColor:B,yAxisID:'y2'}
+]},options:{...D,scales:{x:{...D.scales.x},y:{...D.scales.y,min:6,max:10,ticks:{...D.scales.y.ticks,callback:pct}},y2:{position:'right',grid:{display:false},min:-2,max:5,ticks:{font:{size:10},color:'#888',callback:pct}}}}});
 
-new Chart(document.getElementById('fdiChart'),{type:'bar',data:{labels:['2021','2022','2023','2024','2025','2026E','2027E','2028E','2029E','2030E'],datasets:[{label:'FDI',data:[15.2,18.8,19.2,13.1,14.5,22.0,25.8,27.6,29.1,30.8],backgroundColor:(c)=>c.dataIndex<5?'rgba(29,125,84,0.6)':'rgba(29,125,84,0.35)',borderRadius:4}]},options:{...D,scales:{...D.scales,y:{...D.scales.y,min:0,max:35,ticks:{...D.scales.y.ticks,callback:usd}}}}});
+new Chart(document.getElementById('fxChart'),{type:'line',data:{labels:L7,datasets:[{label:'CLP/USD',data:[943.74,951.25,898.71,890.63,875.93,873.40,872.40],borderColor:B,backgroundColor:'rgba(33,102,134,0.07)',fill:true,tension:.4,borderWidth:2,pointRadius:4,pointBackgroundColor:B}]},options:{...D,scales:{...D.scales,y:{...D.scales.y,min:840,max:980}}}});
+
+new Chart(document.getElementById('fdiChart'),{type:'bar',data:{labels:['2021','2022','2023','2024','2025','2026E','2027E','2028E','2029E','2030E'],datasets:[{label:'FDI',data:[15.2,18.8,19.2,13.1,14.5,22.2,25.7,27.6,29.1,30.7],backgroundColor:(c)=>c.dataIndex<5?'rgba(29,125,84,0.6)':'rgba(29,125,84,0.35)',borderRadius:4}]},options:{...D,scales:{...D.scales,y:{...D.scales.y,min:0,max:35,ticks:{...D.scales.y.ticks,callback:usd}}}}});
 
 new Chart(document.getElementById('sectorChart'),{type:'doughnut',data:{labels:['Minería (40.6%)','Obras públicas (23.4%)','Energía (20.1%)','Inmobiliario (7.3%)','Industrial (5.6%)','Tecnología (1.7%)','Puertos (1.4%)'],datasets:[{data:[40.6,23.4,20.1,7.3,5.6,1.7,1.4],backgroundColor:[B,'#4a90b8',GR,O,'#9b7ecb',R,'#b0aaaa'],borderWidth:2,borderColor:'#f8f7f4',hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:false},tooltip:{callbacks:{label:(c)=>c.label+' · US$'+[35569,20515,17663,6386,4881,1495,1193][c.dataIndex].toLocaleString()+'M'}}}}});
 
-new Chart(document.getElementById('h2Chart'),{type:'bar',data:{labels:['H2 Magallanes\n(Total Eren)','HNH Energy\n(AustriaEnergy)','Inna\n(AES Andes)'],datasets:[{label:'Inversión US$ bn',data:[16,11,10],backgroundColor:['rgba(33,102,134,0.75)','rgba(29,125,84,0.7)','rgba(220,117,40,0.7)'],borderRadius:6}]},options:{...D,indexAxis:'y',scales:{x:{...D.scales.x,ticks:{...D.scales.x.ticks,callback:(v)=>'$'+v+'bn'}},y:{...D.scales.y,grid:{display:false}}},plugins:{...D.plugins,tooltip:{callbacks:{label:(c)=>'US$'+c.parsed.x+'bn · Magallanes/Antofagasta'}}}}});
+new Chart(document.getElementById('h2Chart'),{type:'bar',data:{labels:['H2 Magallanes\n(Total Eren)','HNH Energy\n(AustriaEnergy)','Inna\n(AES Andes)'],datasets:[{label:'US$ bn',data:[16,11,10],backgroundColor:['rgba(33,102,134,0.75)','rgba(29,125,84,0.7)','rgba(220,117,40,0.7)'],borderRadius:6}]},options:{...D,indexAxis:'y',scales:{x:{...D.scales.x,ticks:{...D.scales.x.ticks,callback:(v)=>'$'+v+'bn'}},y:{...D.scales.y,grid:{display:false}}}}});
 
 new Chart(document.getElementById('ratesChart'),{type:'line',data:{labels:L7,datasets:[
   {label:'Tasa activa',data:[7.6,6.4,6.0,6.0,5.1,5.1,5.1],borderColor:B,backgroundColor:'transparent',tension:.4,borderWidth:2,pointRadius:4,pointBackgroundColor:B},
-  {label:'Tasa pasiva',data:[5.6,4.4,4.0,4.0,3.7,3.7,3.7],borderColor:GR,borderDash:[5,3],backgroundColor:'transparent',tension:.4,borderWidth:1.5,pointRadius:3,pointBackgroundColor:GR},
-  {label:'BCCh',data:[5.0,4.5,4.5,4.3,4.3,4.0,4.0],borderColor:R,borderDash:[2,2],backgroundColor:'transparent',tension:.4,borderWidth:1.5,pointRadius:3,pointBackgroundColor:R}
+  {label:'Tasa pasiva',data:[5.6,4.4,4.0,4.0,3.7,3.7,3.7],borderColor:GR,borderDash:[5,3],backgroundColor:'transparent',tension:.4,borderWidth:1.5,pointRadius:3},
+  {label:'BCCh',data:[5.0,4.5,4.5,4.3,4.3,4.0,4.0],borderColor:R,borderDash:[2,2],backgroundColor:'transparent',tension:.4,borderWidth:1.5,pointRadius:3}
 ]},options:{...D,scales:{...D.scales,y:{...D.scales.y,min:2,max:9,ticks:{...D.scales.y.ticks,callback:pct}}}}});
-
-// Desempleo: actualizado con dato abril 2026: 9.1%
-new Chart(document.getElementById('employChart'),{type:'line',data:{labels:L8,datasets:[
-  {label:'Desempleo',data:[8.5,8.1,8.1,8.7,8.6,8.0,7.7,7.5],borderColor:R,backgroundColor:'rgba(205,79,79,0.06)',fill:true,tension:.4,borderWidth:2,pointRadius:4,pointBackgroundColor:R,yAxisID:'y'},
-  {label:'Salario real',data:[1.6,3.4,2.8,1.2,2.0,2.0,2.0,2.0],borderColor:B,borderDash:[4,3],backgroundColor:'transparent',tension:.4,borderWidth:1.5,pointRadius:3,pointBackgroundColor:B,yAxisID:'y2'}
-]},options:{...D,scales:{x:{...D.scales.x},y:{...D.scales.y,min:6,max:10.5,ticks:{...D.scales.y.ticks,callback:pct},title:{display:true,text:'Desempleo',font:{size:10},color:'#888'}},y2:{position:'right',grid:{display:false},min:-2,max:5,ticks:{font:{size:10},color:'#888',callback:pct},title:{display:true,text:'Sal. real',font:{size:10},color:'#888'}}}}});
 </script>
 </body>
 </html>
