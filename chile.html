@@ -402,6 +402,159 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-
     <p>El "Plan de Reconstrucción Nacional y Desarrollo Económico y Social" — conocido como Ley Miscelánea — fue aprobado en general en la Cámara de Diputados el 20 de mayo de 2026 con 90 votos a favor, 59 en contra y 1 abstención. Agrupa ~40 medidas: reforma tributaria corporativa, permisos ambientales, estabilidad jurídica para inversiones, subsidios al empleo formal e inyección de US$400M al Fondo de Reconstrucción para viviendas quemadas por incendios. El 2 de junio ingresó al Senado. Ahí el juego cambia: sin el PDG (que no tiene representación en el Senado), el gobierno necesita votos que hoy no tiene asegurados. Fuentes: Ministerio del Interior, BioBioChile, Infobae, El Mostrador, El Dinamo, Interferencia, Diario Financiero — junio 2026.</p>
   </div>
 
+
+  <!-- VISUAL CONGRESO -->
+  <div id="congreso-widget" style="margin:1.5rem 0">
+  <style>
+  #congreso-widget .eyebrow{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--light);margin-bottom:.4rem}
+  #congreso-widget .chamber{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1rem}
+  #congreso-widget .ch-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:.5rem}
+  #congreso-widget .ch-name{font-size:14px;font-weight:600;color:var(--text)}
+  #congreso-widget .ch-sub{font-size:12px;font-weight:400;color:var(--light);margin-left:6px}
+  #congreso-widget .cpill{display:inline-block;font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:20px}
+  #congreso-widget .cpill-ok{background:#f0f9f5;color:#1D7D54}
+  #congreso-widget .cpill-warn{background:#fff9f0;color:#DC7528}
+  #congreso-widget .cpill-danger{background:#fff5f5;color:#CD4F4F}
+  #congreso-widget .cpill-info{background:#f0f6fb;color:#216686}
+  #congreso-widget .cpill-neutral{background:#f0eee9;color:var(--light)}
+  #congreso-widget .seat-grid{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:.85rem}
+  #congreso-widget .cseat{width:13px;height:13px;border-radius:3px;cursor:default;transition:transform .12s}
+  #congreso-widget .cseat:hover{transform:scale(1.4)}
+  #congreso-widget .s-gov{background:#216686}
+  #congreso-widget .s-pdg{background:#DC7528}
+  #congreso-widget .s-opp{background:#CD4F4F}
+  #congreso-widget .s-favor{background:#1D7D54}
+  #congreso-widget .s-swing{background:#E8B500}
+  #congreso-widget .s-contra{background:#888}
+  #congreso-widget .s-camp{background:#7a3030}
+  #congreso-widget .clegend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:.85rem}
+  #congreso-widget .cleg-i{display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--light)}
+  #congreso-widget .cleg-dot{width:11px;height:11px;border-radius:2px;flex-shrink:0}
+  #congreso-widget .cbar-wrap{margin-bottom:.45rem}
+  #congreso-widget .cbar-labels{display:flex;justify-content:space-between;font-size:11.5px;color:var(--light);margin-bottom:3px}
+  #congreso-widget .cbar-track{height:7px;background:#f0eee9;border-radius:4px;overflow:hidden;display:flex}
+  #congreso-widget .cbar-fill{height:100%;border-radius:4px}
+  #congreso-widget .threshold-box{background:#fff9f0;border:1px solid #f4c97a;border-radius:8px;padding:.65rem 1rem;margin:.85rem 0;font-size:12.5px;color:#DC7528}
+  #congreso-widget .km-title{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--light);margin:.85rem 0 .5rem}
+  #congreso-widget .km-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
+  #congreso-widget .km-card{border:1px solid var(--border);border-radius:8px;padding:.7rem .85rem}
+  #congreso-widget .km-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+  #congreso-widget .km-desc{font-size:11.5px;color:var(--light);line-height:1.45;margin-bottom:.4rem}
+  #congreso-widget .reform-list{margin-top:.5rem}
+  #congreso-widget .reform-row{display:flex;align-items:center;gap:10px;padding:.5rem 0;border-bottom:1px solid var(--border);font-size:13px}
+  #congreso-widget .reform-row:last-child{border-bottom:none}
+  #congreso-widget .r-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+  #congreso-widget .r-name{flex:1;color:var(--text)}
+  #congreso-widget .cnote{font-size:11px;color:var(--light);margin-top:.5rem;line-height:1.5}
+  </style>
+
+  <!-- CÁMARA -->
+  <div class="chamber">
+    <div class="ch-header">
+      <span class="ch-name">Cámara de Diputadas y Diputados <span class="ch-sub">155 escaños</span></span>
+      <span class="cpill cpill-ok">✓ Aprobada 20 mayo · 90–59–1</span>
+    </div>
+    <div class="seat-grid" id="camara-seats2"></div>
+    <div class="clegend">
+      <span class="cleg-i"><span class="cleg-dot" style="background:#216686"></span>Coalición Kast (76)</span>
+      <span class="cleg-i"><span class="cleg-dot" style="background:#DC7528"></span>PDG · kingmaker (14)</span>
+      <span class="cleg-i"><span class="cleg-dot" style="background:#1D7D54"></span>Indep. a favor (6)</span>
+      <span class="cleg-i"><span class="cleg-dot" style="background:#CD4F4F"></span>Oposición (59)</span>
+    </div>
+    <div class="cbar-wrap">
+      <div class="cbar-labels"><span>A favor (90 votos)</span><span style="color:#1D7D54;font-weight:500">58%</span></div>
+      <div class="cbar-track"><div class="cbar-fill" style="width:49%;background:#216686"></div><div class="cbar-fill" style="width:9%;background:#DC7528"></div></div>
+    </div>
+    <div class="cbar-wrap">
+      <div class="cbar-labels"><span>En contra (59 votos)</span><span style="color:#CD4F4F;font-weight:500">38%</span></div>
+      <div class="cbar-track"><div class="cbar-fill" style="width:38%;background:#CD4F4F"></div></div>
+    </div>
+    <p class="cnote">El PDG fue decisivo: sus 14 votos elevaron el resultado de ~76 (insuficiente) a 90 (holgado). Sin el PDG, Kast no tenía mayoría en la Cámara. Fuente: Ministerio del Interior, 20 mayo 2026.</p>
+  </div>
+
+  <!-- SENADO -->
+  <div class="chamber">
+    <div class="ch-header">
+      <span class="ch-name">Senado <span class="ch-sub">50 escaños</span></span>
+      <span class="cpill cpill-danger">En tramitación · votos al límite</span>
+    </div>
+    <div class="seat-grid" id="senado-seats2"></div>
+    <div class="clegend">
+      <span class="cleg-i"><span class="cleg-dot" style="background:#216686"></span>Coalición Kast (24 efectivos)</span>
+      <span class="cleg-i"><span class="cleg-dot" style="background:#1D7D54"></span>Walker + Calisto (a favor)</span>
+      <span class="cleg-i"><span class="cleg-dot" style="background:#E8B500"></span>Swing votes (Bianchi + Araya)</span>
+      <span class="cleg-i"><span class="cleg-dot" style="background:#888"></span>Kusanovic · en contra</span>
+      <span class="cleg-i"><span class="cleg-dot" style="background:#7a3030"></span>Campillai · siempre oposición</span>
+      <span class="cleg-i"><span class="cleg-dot" style="background:#CD4F4F"></span>Oposición (22)</span>
+    </div>
+    <div class="threshold-box">⚠️ Mayoría simple = 26 votos · Con Kusanovic en contra el bloque efectivo es 24 · El gobierno necesita a Bianchi + Araya · 12 artículos al filo de esa mayoría</div>
+    <div class="cbar-wrap">
+      <div class="cbar-labels"><span>Kast + Walker + Calisto</span><span style="color:#DC7528;font-weight:500">26 necesarios</span></div>
+      <div class="cbar-track">
+        <div class="cbar-fill" style="width:48%;background:#216686"></div>
+        <div class="cbar-fill" style="width:4%;background:#1D7D54"></div>
+        <div class="cbar-fill" style="width:4%;background:#E8B500;opacity:.6"></div>
+        <div class="cbar-fill" style="width:2%;background:#888"></div>
+        <div class="cbar-fill" style="width:2%;background:#7a3030"></div>
+        <div class="cbar-fill" style="width:40%;background:#CD4F4F;opacity:.5"></div>
+      </div>
+    </div>
+    <div class="km-title">Los 4 senadores que deciden el resultado</div>
+    <div class="km-grid">
+      <div class="km-card" style="border-left:3px solid #CD4F4F">
+        <div class="km-name">Alejandro Kusanovic</div>
+        <div class="km-desc">Ind-RN · Magallanes. Acusa al gobierno de "traición y deslealtad" por negociar cargos regionales sin consultarle.</div>
+        <span class="cpill cpill-danger">Voto en contra</span>
+      </div>
+      <div class="km-card" style="border-left:3px solid #E8B500">
+        <div class="km-name">Karim Bianchi</div>
+        <div class="km-desc">Ind · Magallanes. Pragmático y regionalista. Crítico de la rebaja del IDPC — el artículo central.</div>
+        <span class="cpill cpill-warn">Swing · indeciso</span>
+      </div>
+      <div class="km-card" style="border-left:3px solid #E8B500">
+        <div class="km-name">Pedro Araya</div>
+        <div class="km-desc">Ind-PPD. Puente posible con el Socialismo Democrático. Clave para acuerdos artículo por artículo.</div>
+        <span class="cpill cpill-warn">En negociación</span>
+      </div>
+      <div class="km-card" style="border-left:3px solid #1D7D54">
+        <div class="km-name">Walker + Calisto</div>
+        <div class="km-desc">Ex-Demócratas. Únicos independientes que confirmaron apoyo a la idea de legislar.</div>
+        <span class="cpill cpill-ok">A favor confirmado</span>
+      </div>
+    </div>
+  </div>
+
+  </div><!-- end congreso-widget -->
+
+  <script>
+  (function(){
+    function seat(cls, tip) {
+      const d = document.createElement('div');
+      d.className = 'cseat ' + cls;
+      d.title = tip;
+      return d;
+    }
+    const cam = document.getElementById('camara-seats2');
+    if(cam) {
+      for(let i=0;i<76;i++) cam.appendChild(seat('s-gov','Coalición Kast'));
+      for(let i=0;i<14;i++) cam.appendChild(seat('s-pdg','PDG — kingmaker decisivo'));
+      for(let i=0;i<6;i++)  cam.appendChild(seat('s-favor','Independientes a favor'));
+      for(let i=0;i<59;i++) cam.appendChild(seat('s-opp','Oposición'));
+    }
+    const sen = document.getElementById('senado-seats2');
+    if(sen) {
+      for(let i=0;i<24;i++) sen.appendChild(seat('s-gov','Coalición Kast'));
+      sen.appendChild(seat('s-favor','Matías Walker — a favor'));
+      sen.appendChild(seat('s-favor','Miguel Ángel Calisto — a favor'));
+      sen.appendChild(seat('s-swing','Karim Bianchi — swing vote'));
+      sen.appendChild(seat('s-swing','Pedro Araya — en negociación'));
+      sen.appendChild(seat('s-contra','Kusanovic — voto en contra'));
+      sen.appendChild(seat('s-camp','Fabiola Campillai — siempre con oposición'));
+      for(let i=0;i<22;i++) sen.appendChild(seat('s-opp','Oposición centro-izquierda'));
+    }
+  })();
+  </script>
+
   <!-- Fragmentación del Senado -->
   <div class="sec-hdr" style="margin-top:1.5rem"><div class="sec-title" style="font-size:1.15rem">Aritmética del Senado: 50 escaños, virtual empate, 4 independientes que deciden</div></div>
 
